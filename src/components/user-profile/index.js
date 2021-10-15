@@ -1,16 +1,14 @@
 import React from 'react';
 import useUser from '../../hooks/use-user';
-import Suggestions from './gauge-chart';
-import Profile from './Profile';
+import Suggestions from '../user-profile/gauge-chart';
 
 export default function BottomSidebar() {
     const { 
-        user: {docId = '', userName, fullName, userId, following}
+        user: {docId = '', userId, following}
     } = useUser();
     
     return (        
-        <div className="container col-span-1">
-            <Profile userName= {userName} fullName={fullName}/>                
+        <div className="container col-span-1">               
             <Suggestions userId= {userId} following={following} loggedInUserDocId={docId} />
         </div>        
     );

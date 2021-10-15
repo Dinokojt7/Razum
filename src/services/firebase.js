@@ -10,6 +10,21 @@ export async function doesUserNameExist(userName) {
     return result.docs.map((user) => user.data().length > 0);
 }
 
+export async function getUserByUserName(userName) {
+  const result = await firebase
+      .firestore()
+      .collection('users')
+      .where('userName', '==', userName )
+      .get();
+
+    return result.docs.map((item) => ({
+    ...item.data(),
+    docId: item.id
+  }));
+}
+
+
+
 // get user from the firestore where userId === userId (passed from the auth)
 export async function getUserByUserId(userId) {
     const result = await firebase
@@ -143,4 +158,34 @@ export async function getSuggestedProfiles(userId, following) {
   
   //     // return fuckupsWithUserDetails;   
   // }
+
+export async function getUserFuckupsByUserName(userName) {
+    const [user] = await getUserByUserName(userName);
+    const result = await firebase
+    .firestore()
+    .collection('fuckups')
+    .where('userId', '==', user.userId)
+    .get();
+
+    return result.docs.map((item) => ({
+      ...item.data(),
+      docId: item.id
+    }));
+}
+
+export async function isUserFollowingProfile(loggedInUserUserName, profileUserId) {
+  const result = await firebase
+    .firestore()
+    .collection('users')
+    .where('userName', '==', loggedInUserUserName)
+    .where('following', 'array-contains', profileUserId)
+    .get();
+
+    const [response = {}] = result.docs.map((item) => ({
+      ...item.data(),
+      docId: item.id
+    }));
+
+    console.log('response', response);
+}
 

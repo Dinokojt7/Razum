@@ -57,10 +57,10 @@ export default function Options({docId, totalBeenTheres,fuckupBeenThere, fuckupF
                             }} 
                             xmlns="http://www.w3.org/2000/svg" 
                             class="h-4 w-4" fill="none" viewBox="0 0 24 19" 
-                            stroke="purple-300">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" 
-                            d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" 
-                        />
+                            fill="none" stroke="#111827" stroke-width="1.5" 
+                            stroke-linecap="butt" stroke-linejoin="arcs"
+                        >
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                         </svg>
                         <div>{foundHelpful === 0 ? `comment` : `${foundHelpful} comment`}</div>
                     </button>                 

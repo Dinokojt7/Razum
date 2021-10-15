@@ -14,7 +14,17 @@ export default function AddComment({docId, comments, setComments, commentInput }
     const handleSubmitComment = (e) => {
         e.prenventDefault();
 
-        return null;
+        setComments([{ displayName, comment }, ...comments]);
+        setComment('');
+
+        
+        return firebase
+            .firestore()
+            .collection('fuckups')
+            .doc(docId)
+            .update({
+                comments: FieldValue.arrayUnion({ displayName, comment })
+            });
     };
 
     return <div className="border-t border-purple-100">
@@ -52,5 +62,5 @@ AddComment.propTypes = {
     docId: PropTypes.string.isRequired,
     comments: PropTypes.string.isRequired,
     setComment: PropTypes.func.isRequired,
-    commonInput: PropTypes.object
+    commentInput: PropTypes.object
 };
