@@ -23,7 +23,7 @@ export default function Dashboard() {
                 <div className="grid grid-cols-3 gap-10 h-12 justify-center mx-auto max-w-screen-lg">
 
                 </div>
-                <div className="container justify-between col-span-3 mx-auto max-w-screen-lg p-4">                
+                <div className="container col-span-3 mx-auto max-w-screen-lg p-4">                
                     <Fuckups />
                 </div>
             </div>
