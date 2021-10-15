@@ -2,7 +2,7 @@
 
 This is a React (Custom Hooks, Context) web app, made with Firebase & Tailwind CSS. I have built the
 following pages within this application: login, sign up, dashboard & lastly the user profile page. 
-here are four different pages, some are public and some are private with auth listeners. 
+These four different pages, we have both public and private ones that uses auth listeners. 
 Firebase firestore handles all the data, and that data is retrieved using a custom hook.
 
 The main functionality of this app is to solve a knowledge problem which is core to the everyday activities 
