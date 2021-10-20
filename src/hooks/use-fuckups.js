@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from "react"
-import UserContext from "../context/user"
+import { useState, useEffect, useContext } from "react";
+import UserContext from "../context/user";
 import { getFuckups, getUserByUserId } from "../services/firebase";
 
 export default function useFuckups() {

@@ -13,14 +13,14 @@ export default function Dashboard() {
     }, []);
 
     return(
-        <div className="bg-gray-50 h-screen">
+        <div className="bg-gray-50 ">
             <Header />
-            <div className="mx-auto max-w-screen-lg divide-y-2 divide-gray-400">
+            <div className=" mx-auto max-w-screen-lg divide-y-2 divide-gray-400">
                 <div className="grid grid-cols-3 gap-10 justify-between mx-auto max-w-screen-lg">
                     <Home />
                     <Sidebar />
                 </div>
-                <div className="grid grid-cols-3 gap-10 h-12 justify-center mx-auto max-w-screen-lg">
+                <div className="flex-1 overflow-y-auto grid grid-cols-3 gap-10 h-12 justify-center mx-auto max-w-screen-lg">
 
                 </div>
                 <div className="container col-span-3 mx-auto max-w-screen-lg p-4">                

@@ -90,6 +90,7 @@ export default function Options({docId, totalBeenTheres,fuckupBeenThere, fuckupF
                     >
                             {foundHelpful === 0 ? `been there` : `${foundHelpful} been there`}
                     </button>
+                    <div className="flex justify-end">
                     <button
                         type="button"
                         onClick={handleToggleBeenThere}
@@ -98,7 +99,7 @@ export default function Options({docId, totalBeenTheres,fuckupBeenThere, fuckupF
                                 handleToggleBeenThere();
                             }
                         }}
-                        className="flex column space-x-1 text-xs mr-1 select-none cursor-pointer flex justify-end"
+                        className="flex column space-x-1 text-xs select-none cursor-pointer flex justify-end"
                     >
                         <p>full story</p>
                         <svg 
@@ -109,7 +110,8 @@ export default function Options({docId, totalBeenTheres,fuckupBeenThere, fuckupF
                                 clip-rule="evenodd" 
                             />
                         </svg>
-                        </button>                    
+                        </button> 
+                        </div>                   
                 </div>
             </div>
         </>

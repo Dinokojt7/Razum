@@ -102,7 +102,7 @@ export default function SignUp() {
                                 aria-label="Enter your full name"          
                                 type="text"
                                 placeholder="Full Name"
-                                className="text-sm text-gray-base  h-8 py-2 pl-1  font-base border border-gray-300 rounded-full mb-5"
+                                className="text-sm text-gray-base h-8 py-2 pl-3 font-base border border-gray-300 rounded-full mb-5"
                                 onChange={({ target }) => setFullName(target.value)}
                                 value={fullName}
                             />  
@@ -110,7 +110,7 @@ export default function SignUp() {
                                 aria-label="Enter your username"          
                                 type="text"
                                 placeholder="Username"
-                                className="text-sm text-gray-base h-8 py-2  pl-3 font-base border border-gray-300 rounded-full mb-5"
+                                className="text-sm text-gray-base h-8 py-2 pl-3 font-base border border-gray-300 rounded-full mb-5"
                                 onChange={({ target }) => setUserName(target.value)}
                                 value={userName}
                             />

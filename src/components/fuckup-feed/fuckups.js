@@ -5,8 +5,6 @@ import Post from "./index";
 export default function Fuckups () {
     const { fuckups } = useFuckups();
 
-    console.log('fuckups', fuckups);
-
     return (
         <div className="container col-span-2">
             {!fuckups ? (

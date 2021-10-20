@@ -9,7 +9,6 @@ export default function Header({ userName, body }) {
                     <img
                         className="h-9 w-9 flex mr-3 mt-0 pt-0"
                         src={`/images/avatars/${userName}.jpg`}
-                        alt={`${userName} profile picture`}
                     />
                 </Link>
                     <div className="col-span-3 mt-0">

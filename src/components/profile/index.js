@@ -28,15 +28,25 @@ export default function Profile({user}) {
         getProfileInfoAndFuckups();       
     }, [user.userName]);
 
-    return (
+    return ( 
         <>
-            <Header 
-                fuckupCount={fuckupsCollection ? fuckupsCollection.length : 0}
-                profile={profile}
-                followerCount={followerCount}
-                setFollowerCount={dispatch}
-            />
-            <Fuckups fuckups={fuckupsCollection} />
+            <>
+                <Header 
+                    fuckupCount={fuckupsCollection ? fuckupsCollection.length : 0}
+                    profile={profile}
+                    followerCount={followerCount}
+                    setFollowerCount={dispatch}
+                />
+            </>
+            <div className="mx-auto max-w-screen-lg divide-y-2 divide-gray-400">
+                <div className="grid grid-cols-3 gap-10 justify-between mx-auto max-w-screen-lg">
+                    <Fuckups 
+                        fuckups={fuckupsCollection}
+                        profile={profile} 
+                    />
+                </div>
+                    
+            </div>
         </>
     );
 }

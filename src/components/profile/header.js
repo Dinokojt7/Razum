@@ -2,17 +2,33 @@ import PropTypes from  'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import { useState, useEffect } from 'react';
 import useUser from '../../hooks/use-user';
-import { isUserFollowingProfile } from '../../services/firebase';
+import { Link } from 'react-router-dom';
+import { isUserFollowingProfile, toggleFollow } from '../../services/firebase';
 
 export default function Header({ 
     fuckupCount, 
     followerCount,
     setFollowerCount,
-    profile: { docId: profileDocId, userId: profileUserId, fullName, following,
+     profile: { 
+         docId: profileDocId, 
+         userId: profileUserId, 
+         fullName,
+         startupName, 
+         following = [],
+         followers = [],
         userName: profileUserName }
 }) {
     const { user } = useUser();
     const [isFollowingProfile, setIsFollowingProfile] = useState(false);
+    const activeBtnFollow = user.userName && user.userName !== profileUserName;
+
+    const handleToggleFollow = async () => {
+        setIsFollowingProfile(isFollowingProfile => !isFollowingProfile);
+        setFollowerCount({
+            followerCount: isFollowingProfile ? followerCount - 1 : followers.length + 1
+        });
+        await toggleFollow(isFollowingProfile, user.docId, profileDocId, profileUserId, user.userId);
+    };
 
     useEffect(() => {
         const isLoggedInUserFollowingProfile = async () => {
@@ -23,10 +39,84 @@ export default function Header({
         if (user.userName && profileUserId) {
             isLoggedInUserFollowingProfile();
         }
-    }, [user.userName, profileUserId]);
 
-    return null;
-}
+    }, [user.userName, profileUserId]
+    
+    );
+
+    return ( !profileUserName || !fullName ? (
+                <Skeleton count={1} height={100} width={280}/>
+            ) : (
+        <div className="max-w-screen-lg justify-between mx-auto grid border-b border-gray-200 grid-cols-3">
+            <div className="container col-span-2">
+                <div className="grid grid-cols-2">
+                    <div className="container col-span-1 flex justify-start">                
+                        <img 
+                            className="h-20 w-20 border border-indigo-300 flex mt-2 mr-4"                 
+                            src={`/images/avatars/${profileUserName}.jpg`}
+                            alt={`${user.userName} profile picture`}
+                        />
+                        <div className="container col-span-1 pr-3 mt-0">
+                            <p className="font-bold text-lg">{fullName} </p>
+                            <p className="font-medium text-gray-900 text-sm tracking-wide">Founder</p>
+                            <p className="font-medium text-gray-900 pt-2 text-xs tracking-wide">Fuckups passed</p>
+                            <p className="font-medium text-gray-900 text-xs tracking-wide">{followerCount} found {profileUserName}'s fuckups useful</p>            
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+            <div className="flex justify-end">
+                <div className="">
+                    <div>                    
+                        <button 
+                            className="bg-gradient-to-r from-purple-100 to-purple-100 border border-purple-200 flex-grow-none mt-3 ml-0 h-6 rounded">
+                            <p className="font-medium text-gray-800 text-sm tracking-wide px-5">{followerCount} {followerCount === 1 ? `Follower  ` : `Followers`}</p>                       
+                        </button>
+                    </div>
+                    <div>
+                        <button 
+                            className="bg-gradient-to-r from-indigo-100 to-purple-100 border border-purple-200 mt-3 ml-0 h-6 rounded mx-auto">
+                            <p className="font-medium text-gray-800 text-sm tracking-wide px-5">{following.length} Following</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div className="container col-span-3 mt-3 mr-4 mb-4">
+                <div className="grid grid-cols-2">
+                    <div className="flex-grow-none ml-0  mt-2">
+                        <button className="bg-purple-600 border border-purple-300 flex-grow-none  mr-0 h-6 rounded">
+                            <p className="font-medium text-white text-sm tracking-wide  px-1">My Takeaways</p>
+                        </button>                    
+                            {activeBtnFollow && (
+                            <button 
+                            className="bg-gradient-to-r from-purple-100 to-purple-100 border border-purple-200 flex-grow-none h-6 rounded
+                            font-medium text-gray-800 text-sm tracking-wide px-5  mx-auto mt-1 ml-2"
+                                type="button"
+                                onClick={handleToggleFollow}
+                                onKeyDown={(e) => {
+                                    if (e.key === 'Enter') {
+                                        handleToggleFollow();
+                                    }
+                                }}
+                            >   
+                                {isFollowingProfile ? 'Following' : 'Follow'}                        
+                            </button>
+                            )}
+                            {!activeBtnFollow && (
+                            <button 
+                                className="bg-gradient-to-r from-purple-100 to-purple-100 border border-purple-200 flex-grow-none h-6 rounded
+                                font-medium text-gray-800 text-sm tracking-wide px-5  mx-auto mt-1 ml-2"                        
+                            >   
+                                <p>Saved</p>                       
+                            </button>
+                            )}                    
+                    </div>                    
+                </div>            
+            </div>
+        </div>    
+        ) 
+)}
+
 
 Header.propTypes = {
     fuckupCount: PropTypes.number.isRequired,
@@ -36,43 +126,11 @@ Header.propTypes = {
         docId: PropTypes.string,
         userId: PropTypes.string,
         fullName: PropTypes.string,
-        following: PropTypes.array
+        startupName: PropTypes.string,
+        userName: PropTypes.string,
+        following: PropTypes.array,
+        followers  : PropTypes.array
     }).isRequired
 };
 
 
-// const Header = ({ userName, fullName }) =>
-//     !userName || !fullName ? (
-//         <Skeleton count={1} height={50} />
-//     ) : ( 
-//     <div className="">
-//         <Link to={`/p/${userName}`} className="grid grid-cols-4 gap-4 mb-2 items-center">
-//             <div className="flex items-center pt-8 justify-between col-span-1">                
-//                 <img 
-//                 className=" w-22 border border-indigo-300 flex justify-end mr-3"
-//                 src={`/images/avatars/${userName}.png`}
-//                 alt=""
-//             />
-//             </div>
-//             <div className="col-span-3 mt-0">
-//                 <p className="font-medium text-sm tracking-wide">{fullName} - ({userName})</p>
-//                 <p className="font-medium text-gray-400 text-sm">Founder - Izinto</p>            
-//             </div>
-//         </Link>
-//         <div className="cointainer col-span-2 mb-4 mr-4">
-//             <button className="bg-indigo-500 border border-indigo-300 flex-grow-none  mr-0 h-6 rounded">
-//                 <p className="font-normal text-white text-sm tracking-wide px-1">My Takeaways</p>
-//             </button>
-//             <button className="bg-gray-400 border border-gray-400  mx-auto mt-1 ml-0 h-6 rounded mx-auto ml-2">
-//                 <p className="font-normal text-white text-sm tracking-wide px-1">Saved</p>
-//             </button>            
-//         </div>
-//     </div>    
-//     );
-
-// export default Header;     
-
-// Header.propTypes = {
-//     userName: PropTypes.string,
-//     fullName: PropTypes.string,
-// };

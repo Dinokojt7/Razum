@@ -1,15 +1,19 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import FirebaseContext  from '../context/firebase';
 import UserContext from "../context/user";
-import * as ROUTES from "../constants/routes"
+import * as ROUTES from "../constants/routes";
+
+
 
 export default function Header() {
+    const [showModal, setShowModal] = useState(false);  
+
     const { firebase } = useContext(FirebaseContext);
     const { user } = useContext(UserContext); 
         
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-indigo-300 h-14 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-300 ...  mb-8 px-2 sm:px-0">
+        <header className="sticky top-0 z-50 w-full border-b border-indigo-500 h-14 bg-gradient-to-r from-indigo-800 via-purple-500 to-purple-800 ...  mb-8 px-2 sm:px-0">
             <div className="container mx-auto max-w-screen-lg h-full">
                 <div className="flex justify-between h-full">
                     <div className="text-indigo-50 text-center border-r border-indigo-300 flex items-center align-items cursor-pointer">
@@ -31,10 +35,9 @@ export default function Header() {
                                 </Link>
                                 <button
                                     type="button"
-                                    className="text-lg text-white h-8 mr-1 px-1 border-solid inline-flex space-x-3 w-auto font-medium tracking-wide"
-                                    onClick={() => firebase.auth().signOut()}
-                                >  
-                                    {/* <span>post</span> */}
+                                    className="text-lg  h-8  border-solid inline-flex space-x-3 font-medium"
+                                    onClick={() => setShowModal(true)}
+                                >                                     
                                     <svg 
                                         xmlns="http://www.w3.org/2000/svg" 
                                         width="21" height="30" viewBox="0 0 24 24" 
@@ -44,8 +47,72 @@ export default function Header() {
                                         </path>
                                         <polygon points="18 2 22 6 12 16 8 16 8 12 18 2">
                                         </polygon>
-                                    </svg>
+                                    </svg>                                    
                                 </button>
+                                                                
+                                {showModal ? (
+                                    <div className="px-0 pl-0 mr-0 mx-0">
+                                        <div
+                                            className="justify-center items-center w-full flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none  focus:outline-none"
+                                        >
+                                            <div className="relative my-6 mx-0 max-w-2xl ml-0">
+                                            {/*content*/}
+                                                <div className="border-0 rounded-lg shadow-lg relative ml-0 flex flex-col w-full bg-white outline-none focus:outline-none">
+                                                    {/*header*/}
+                                                    <div className="flex items-start justify-between py-3 px-6 border-b border-solid border-blueGray-200 rounded">
+                                                        <h3 className="text-xl font-semibold text-gray-800">
+                                                            Post a new fuckup
+                                                        </h3>
+                                                        <button
+                                                            className="p-1 ml-auto border-1 border-gray-800 text-gray-400 rounded-2xl  float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                                                            onClick={() => setShowModal(false)}
+                                                        >
+                                                            <span className="text-gray-500 border border-solid rounded-2xl border-Gray-400 text-sm block outline-none focus:outline-none pt-0">
+                                                            ×
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                    {/*body*/}
+                                                    <div className="relative py-1 px-6 ">
+                                                    <p className="my-4 text-gray-700 text-base leading-relaxed">
+                                                        I always felt like I could do anything. That’s the main
+                                                        thing people are controlled by! Thoughts- their perception
+                                                        of themselves! They're slowed down by their perception of
+                                                        themselves. If you're taught you can’t do anything, you
+                                                        won’t do anything. I was taught I could do everything.
+                                                    </p>
+                                                    </div>
+                                                    {/*footer*/}
+                                                    <div className="flex items-center justify-end py-1 px-6 border-t border-solid border-gray-200 rounded-b">
+                                                    <button
+                                                        className="text-gray-500 background-transparent font-medium uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"
+                                                        type="button"
+                                                        onClick={() => setShowModal(false)}
+                                                    >
+                                                        Save
+                                                    </button>
+                                                    <button
+                                                        className="transform rotate-90 bg-gradient-to-r from-indigo-200 to-purple-200 text-gray-600 border-solid border-purple-200 active:bg-emerald-600 font-medium uppercase text-sm px-1 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 tracking-wider"
+                                                        type="button"
+                                                        onClick={() => setShowModal(false)}
+                                                    >
+                                                        <svg 
+                                                            xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" 
+                                                            viewBox="0 0 24 21" stroke="currentColor">
+                                                            <path 
+                                                                stroke-linecap="round" stroke-linejoin="round" 
+                                                                stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" 
+                                                            />
+                                                        </svg>
+                                                    </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                                    </div>
+                                ) : null}
+
                                 <div className="flex items-center cursor-pointer">
                                     <Link to={`./p/${user.displayName}`}>
                                         <img 
@@ -63,7 +130,7 @@ export default function Header() {
                                     onKeyDown={(e) => {
                                         if (e.key === 'Enter') {
                                             firebase.auth().signOut();
-                                        } //
+                                        } 
                                     }}
                                 >   
                                     <svg 
@@ -95,7 +162,6 @@ export default function Header() {
                     </div>
                 </div>
             </div>
-
         </header>
     );
 }

@@ -25,10 +25,12 @@ export default function ProfilePage() {
     }, [userName, history]);
 
         return user?.userName ? (
-            <div>
+            <div className="bg-gray-50 h-screen">
                 <Header />
-                <div className="mx-auto max-w-screen-lg">
-                    <Profile user={user} />
+                <div className="mx-auto max-w-screen-lg divide-y-2 divide-gray-400">
+                    <div className="gap-10 justify-between ">
+                        <Profile user={user} />
+                    </div>
                 </div>
             </div>
         ) : null;
