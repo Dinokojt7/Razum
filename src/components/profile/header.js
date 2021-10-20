@@ -2,6 +2,7 @@ import PropTypes from  'prop-types';
 import Skeleton from 'react-loading-skeleton';
 import { useState, useEffect } from 'react';
 import useUser from '../../hooks/use-user';
+import ReactAvatarEditor from "react-avatar-editor";
 import { Link } from 'react-router-dom';
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase';
 
@@ -16,8 +17,9 @@ export default function Header({
          startupName, 
          following = [],
          followers = [],
-        userName: profileUserName }
+        userName: profileUserName },
 }) {
+    
     const { user } = useUser();
     const [isFollowingProfile, setIsFollowingProfile] = useState(false);
     const activeBtnFollow = user.userName && user.userName !== profileUserName;
@@ -43,7 +45,7 @@ export default function Header({
     }, [user.userName, profileUserId]
     
     );
-
+ 
     return ( !profileUserName || !fullName ? (
                 <Skeleton count={1} height={100} width={280}/>
             ) : (
@@ -53,7 +55,7 @@ export default function Header({
                     <div className="container col-span-1 flex justify-start">                
                         <img 
                             className="h-20 w-20 border border-indigo-300 flex mt-2 mr-4"                 
-                            src={`/images/avatars/${profileUserName}.jpg`}
+                            src={`/images/avatars/Tiisetso.jpg`}
                             alt={`${user.userName} profile picture`}
                         />
                         <div className="container col-span-1 pr-3 mt-0">

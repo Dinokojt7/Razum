@@ -8,7 +8,7 @@ export default function Header({ userName, body }) {
                 <Link to={`/p/${userName}`} className="flex p-0 mt-0 items-center">
                     <img
                         className="h-9 w-9 flex mr-3 mt-0 pt-0"
-                        src={`/images/avatars/${userName}.jpg`}
+                        src={`/images/avatars/Tiisetso.jpg`}
                     />
                 </Link>
                     <div className="col-span-3 mt-0">
@@ -16,10 +16,7 @@ export default function Header({ userName, body }) {
                         <p className="font-bold tracking-wide pt-0 mt-0 text-base text-black-500 flex items-center">{userName}</p>
                     </Link>    
                     <p className="font-medium text-black-400 text-sm">{body}</p>           
-                    </div>
-                    
-                    
-               
+                    </div>                 
             </div>
         </div>
     );

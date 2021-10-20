@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Header from './header';
 import Fuckups from './fuckups';
 import { getUserFuckupsByUserName } from '../../services/firebase';
+import Gauge from './gauge-chart';
 
 export default function Profile({user}) {
     const reducer = (state, newState) => ({ ...state, ...newState});
@@ -44,6 +45,7 @@ export default function Profile({user}) {
                         fuckups={fuckupsCollection}
                         profile={profile} 
                     />
+                    <Gauge/>
                 </div>
                     
             </div>
