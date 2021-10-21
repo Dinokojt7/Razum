@@ -1,7 +1,6 @@
 import Firebase from 'firebase/compat/app';
 import 'firebase/compat/firestore';
 import 'firebase/compat/auth';
-import 'firebase/storage';
 
 
 // import seed file
