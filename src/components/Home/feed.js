@@ -7,7 +7,7 @@ export default function Market ({ market }) {
         return  !market ? (
             <Skeleton count={1} height={30} />
             ) : (                 
-            <div className="cointainer flex col-span-2 rid grid-cols-4 mr-1  mb-2 ">
+            <div className="sticky top-0 cointainer flex col-span-2 rid grid-cols-4 mr-1  mb-2 ">
             <div className=" flex-grow-none ml-5 mr-0 mt-2">
                 <p className="font-medium uppercase text-sm pr-0 tracking-wide text-gray-900">
                     MARKET: 

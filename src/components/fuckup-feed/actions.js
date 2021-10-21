@@ -46,7 +46,7 @@ export default function Options({docId, totalBeenTheres,fuckupBeenThere, fuckupF
             <div className="flex column justify-between pt-6">
                 <div className="flex  space-x-10">
                     <button
-                        className="flex column space-x-1 text-xs mr-1 select-none cursor-pointer"                        
+                        className="flex column space-x-1 text-sm font-medium mr-1 select-none cursor-pointer"                        
                     >
                         <svg
                             onClick={handleFocus}
@@ -56,13 +56,13 @@ export default function Options({docId, totalBeenTheres,fuckupBeenThere, fuckupF
                                 }
                             }} 
                             xmlns="http://www.w3.org/2000/svg" 
-                            class="h-4 w-4" fill="none" viewBox="0 0 24 19" 
+                            class="h-4 w-4" fill="none" viewBox="0 0 24 14" 
                             fill="none" stroke="#111827" stroke-width="1.5" 
                             stroke-linecap="butt" stroke-linejoin="arcs"
                         >
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                         </svg>
-                        <div>{foundHelpful === 0 ? `comment` : `${foundHelpful} comment`}</div>
+                        <div>{foundHelpful === 1 ? `${foundHelpful} comment` : `${foundHelpful} comments`}</div>
                     </button>                 
                     <button
                         type="button"
@@ -72,7 +72,7 @@ export default function Options({docId, totalBeenTheres,fuckupBeenThere, fuckupF
                                 handleToggleFoundHelpful();
                             }
                         }}
-                        className={`text-xs mr-1 select-none cursor-pointer 
+                        className={`text-sm font-medium mr-1 select-none cursor-pointer 
                             ${toggleFoundHelpful ? 'text-indigo-500' : 'text-black-400'}`}
                     >
                             {foundHelpful === 0 ? `found helpful` : `${foundHelpful} found helpful`}
@@ -85,7 +85,7 @@ export default function Options({docId, totalBeenTheres,fuckupBeenThere, fuckupF
                                 handleToggleBeenThere();
                             }
                         }}
-                        className={`text-xs mr-1 select-none cursor-pointer justify-between
+                        className={`text-sm font-medium select-none cursor-pointer justify-between
                             ${toggleBeenThere ? 'text-indigo-500' : 'text-black-400'}`}
                     >
                             {foundHelpful === 0 ? `been there` : `${foundHelpful} been there`}
@@ -99,7 +99,7 @@ export default function Options({docId, totalBeenTheres,fuckupBeenThere, fuckupF
                                 handleToggleBeenThere();
                             }
                         }}
-                        className="flex column space-x-1 text-xs select-none cursor-pointer flex justify-end"
+                        className="flex column space-x-1 text-sm font-medium select-none cursor-pointer flex justify-end"
                     >
                         <p>full story</p>
                         <svg 

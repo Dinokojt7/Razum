@@ -35,7 +35,7 @@ export default function Login() {
     <div class="w-full space-y-0 h-screen">   
     <nav class="sticky w-full h-auto bg-gradient-to-r from-white via-purple-500 to-indigo-700 ... px-2 sm:px-0">
         <div class="container flex justify-between py-1 mx-auto">
-            <label class="uppercase text-lg font-bold tracking-wider text-indigo-700">
+            <label class="uppercase text-lg font-bold tracking-wider text-purple-900">
                 razum
             </label>
             <button

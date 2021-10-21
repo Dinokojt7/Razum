@@ -49,9 +49,9 @@ export default function AddComment({docId, comments, setComments, commentInput }
                         type="submit"
                         disabled={comment.length < 1}
                         onClick={handleSubmitComment}
-                        className="bg-indigo-300 flex-grow-none mr-0 h-6 rounded"
+                        className="bg-gradient-to-r from-indigo-600 via-indigo-800 to-purple-900 flex-grow-none mr-0 h-6 rounded"
                     >
-                        <p className="font-normal text-white text-sm tracking-wide px-1">Post</p>
+                        <p className="font-medium text-white text-sm tracking-wider px-1">Post</p>
                     </button>
                 </form>
             </div>

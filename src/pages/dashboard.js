@@ -4,6 +4,7 @@ import Fuckups from "../components/fuckup-feed/fuckups";
 import Header from "../components/header";
 import Home from "../components/Home";
 import Sidebar from "../components/sidebar";
+import Stage from "../components/stage";
 import BottomSidebar from "../components/user-profile";
 
 
@@ -20,8 +21,8 @@ export default function Dashboard() {
                     <Home />
                     <Sidebar />
                 </div>
-                <div className="flex-1 overflow-y-auto grid grid-cols-3 gap-10 h-12 justify-center mx-auto max-w-screen-lg">
-
+                <div className="flex-1 overflow-y-auto  gap-10 h-12 justify-center mx-auto max-w-screen-lg">
+                    <Stage />
                 </div>
                 <div className="container col-span-3 mx-auto max-w-screen-lg p-4">                
                     <Fuckups />

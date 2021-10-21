@@ -71,7 +71,7 @@ export default function Header({
                 <div className="">
                     <div>                    
                         <button 
-                            className="bg-gradient-to-r from-purple-100 to-purple-100 border border-purple-200 flex-grow-none mt-3 ml-0 h-6 rounded">
+                            className="bg-gradient-to-r from-purple-100 to-purple-100 border border-purple-200 flex-grow-none mt-3 ml-0  h-6 rounded">
                             <p className="font-medium text-gray-800 text-sm tracking-wide px-5">{followerCount} {followerCount === 1 ? `Follower  ` : `Followers`}</p>                       
                         </button>
                     </div>
@@ -86,7 +86,7 @@ export default function Header({
             <div className="container col-span-3 mt-3 mr-4 mb-4">
                 <div className="grid grid-cols-2">
                     <div className="flex-grow-none ml-0  mt-2">
-                        <button className="bg-purple-600 border border-purple-300 flex-grow-none  mr-0 h-6 rounded">
+                        <button className="bg-indigo-700 border border-purple-300 flex-grow-none  mr-0 h-6 rounded">
                             <p className="font-medium text-white text-sm tracking-wide  px-1">My Takeaways</p>
                         </button>                    
                             {activeBtnFollow && (

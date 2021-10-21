@@ -15,6 +15,7 @@ export default function SignUp() {
     const [emailAddress, setEmailAddress] = useState ('');
     const [password, setPassword] = useState('');
     const [market, setMarket] = useState('');
+    const [company, setcompany] = useState('');
 
     const [error, setError] = useState('');
     const isInvalid = password === '' || emailAddress === '';
@@ -47,7 +48,9 @@ export default function SignUp() {
                  emailAddress: emailAddress.toLowerCase(),
                  following: [],
                  dateCreated: Date.now(),
-                 market: market 
+                 company: company,
+                 market: market,
+                 followers: [], 
              });
 
              history.push(ROUTES.DASHBOARD);
@@ -84,7 +87,7 @@ export default function SignUp() {
         <div className=" bg-gray-70 flex mx-auto w-full items-center h-screen">                   
             <div className=" container rounded-full flex  mx-auto w-full">
                 <div className="bg-white max-w-sm mx-auto md:p-6 my-20 w-full py-1 rounded-lg shadow-2xl">
-                    <div class="p-1 text-center pb-14">
+                    <div class="p-1 text-center pb-6">
                         <h4 class="font-medium text-black text-2xl">Create your account</h4>
                         <p className="text-xs text-gray-400 pt-3">
                             Have an account?{` `}
@@ -94,7 +97,7 @@ export default function SignUp() {
                         </p>
                     </div>
 
-                    {error && <p className="mb-4 pt-2 text-xs text-red-400">{error}</p>}
+                    {error && <p className="flex-none mb-4 pt-0 text-xs text-red-400">{error}</p>}
                     
                     <form onSubmit={handleSignUp} method="POST">
                         <div className="flex space-x-1 p-0 items-center">
@@ -157,7 +160,15 @@ export default function SignUp() {
                                 <option value="Beauty, Fashion, and Jewellery" className="text-black">Beauty, Fashion, and Jewellery</option>
                                 <option value="Other" className="text-black">Other</option>
                             </select>
-                        </label>                                
+                        </label>
+                        <input
+                            aria-label="Company Name"
+                            type="text"
+                            placeholder="Company Name"
+                            className="focus:border-blue-600  text-sm text-gray-base pr-10 mr-auto w-full h-8 py-2  pl-3 mt-6 font-base border border-gray-300 rounded-full mb-0"
+                            onChange={({ target }) => setcompany(target.value)}
+                            value={company}
+                        />                                
                         <button
                             disabled={isInvalid}
                             type="submit"
