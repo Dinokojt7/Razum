@@ -46,7 +46,7 @@ export default function Options({docId, totalBeenTheres,fuckupBeenThere, fuckupF
             <div className="flex column justify-between pt-6">
                 <div className="flex  space-x-10">
                     <button
-                        className="flex column space-x-1 text-sm font-medium mr-1 select-none cursor-pointer"                        
+                        className="flex column space-x-1 text-xs font-medium mr-1 select-none cursor-pointer"                        
                     >
                         <svg
                             onClick={handleFocus}
@@ -72,7 +72,7 @@ export default function Options({docId, totalBeenTheres,fuckupBeenThere, fuckupF
                                 handleToggleFoundHelpful();
                             }
                         }}
-                        className={`text-sm font-medium mr-1 select-none cursor-pointer 
+                        className={`text-xs font-medium mr-1 select-none cursor-pointer 
                             ${toggleFoundHelpful ? 'text-indigo-500' : 'text-black-400'}`}
                     >
                             {foundHelpful === 0 ? `found helpful` : `${foundHelpful} found helpful`}
@@ -85,7 +85,7 @@ export default function Options({docId, totalBeenTheres,fuckupBeenThere, fuckupF
                                 handleToggleBeenThere();
                             }
                         }}
-                        className={`text-sm font-medium select-none cursor-pointer justify-between
+                        className={`text-xs font-medium select-none cursor-pointer justify-between
                             ${toggleBeenThere ? 'text-indigo-500' : 'text-black-400'}`}
                     >
                             {foundHelpful === 0 ? `been there` : `${foundHelpful} been there`}
@@ -99,7 +99,7 @@ export default function Options({docId, totalBeenTheres,fuckupBeenThere, fuckupF
                                 handleToggleBeenThere();
                             }
                         }}
-                        className="flex column space-x-1 text-sm font-medium select-none cursor-pointer flex justify-end"
+                        className="flex column space-x-1 text-xs font-medium select-none cursor-pointer flex justify-end"
                     >
                         <p>full story</p>
                         <svg 
