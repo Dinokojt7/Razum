@@ -167,7 +167,7 @@ export default function Header() {
                                             className={
                                                 "flex text-sm py-2 hover:bg-indigo-400 hover:text-white w-full px-1 text-gray-600 font-normal " }
                                             //Sign out
-                                            onClick={() => firebase.auth().signOut()}
+                                            onClick={e => e.preventDefault()}
                                             onKeyDown={(e) => {
                                                 if (e.key === 'Enter') {
                                                     firebase.auth().signOut();
