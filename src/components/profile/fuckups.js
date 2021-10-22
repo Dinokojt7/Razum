@@ -16,8 +16,8 @@ export default function Fuckups({fuckups}) {
                     fuckups.map((fuckup) => 
                     <div key={fuckup.docId} className="grid grid-cols-2 py-2 mb-0">
                         <div className="container bg-gray-200 col-span-2 flex p-2 rounded justify-start">
-                            <p className="font-medium ml-0 text-base border-gray-200 tracking-wide mx-auto">{fuckup.body}</p>
-                            <p className="font-medium mr-0 text-base border-gray-200 tracking-wider mx-auto">{format(fuckup.dateCreated, "dd.MM.yy")}</p>    
+                            <p className="font-medium ml-0 text-sm border-gray-200 tracking-wide mx-auto">{fuckup.body}</p>
+                            <p className="font-medium mr-0 text-sm border-gray-200 tracking-wider mx-auto">{format(fuckup.dateCreated, "dd.MM.yy")}</p>    
                         </div>
                         <div className="container col-span-2 flex justify-end pt-1 pb-2 pr-0">
                         <Link to={PROFILE}>
