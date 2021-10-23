@@ -39,26 +39,26 @@ export default function Header() {
     const handleNewFuckup = async (event) => {
         event.preventDefault();
 
-            // firebase fuckup collection (create a document)
-            await firebase
-            .firestore()
-            .collection('fuckups')
-            .add({
-                // fuckupId: createdUserResult.user.uid, 
-                body: newFuckup,
-                takeAway: takeAway,
-                fullStory: fullStory,
-                dateCreated: Date.now(),
-                comments: [],
-                foundHelpful: [],
-                beenThere: [],
-                userId: 'ZyXrtGgEGBhs6fZY8rIjW7Un2ts2',
-                userHandle: 'Tiisetso Dinoko' 
-            })
-             .catch(err => {
-                setError(error.message);
-            });
-            setShowModal(false)        
+        // firebase fuckup collection (create a document)
+        await firebase
+        .firestore()
+        .collection('fuckups')
+        .add({
+            // fuckupId: createdUserResult.user.uid, 
+            body: newFuckup,
+            takeAway: takeAway,
+            fullStory: fullStory,
+            dateCreated: Date.now(),
+            comments: [],
+            foundHelpful: [],
+            beenThere: [],
+            userId: 'ZyXrtGgEGBhs6fZY8rIjW7Un2ts2',
+            userHandle: 'Tiisetso Dinoko' 
+        })
+            .catch(err => {
+            setError(error.message);
+        });
+        setShowModal(false)        
     };
         
     return (
