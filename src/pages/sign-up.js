@@ -48,7 +48,7 @@ export default function SignUp() {
                  emailAddress: emailAddress.toLowerCase(),
                  following: [],
                  dateCreated: Date.now(),
-                 company: company,
+                 startupName: company,
                  market: market,
                  followers: [], 
              });

@@ -1,13 +1,20 @@
 import { createRef, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import FirebaseContext  from '../context/firebase';
+import { format } from 'date-fns';
 import UserContext from "../context/user";
 import * as ROUTES from "../constants/routes";
 import { createPopper } from "@popperjs/core";
 
 
 export default function Header() {
-    const [showModal, setShowModal] = useState(false);  
+    const [showModal, setShowModal] = useState(false);
+    const [newFuckup, setNewFuckup] = useState('');
+    const [takeAway, setTakeAway] = useState('');
+    const [fullStory, setFullStory] = useState(''); 
+    
+    const [error, setError] = useState('');
+    const isInvalid = newFuckup === '' || takeAway === '' || fullStory === '';
 
     const { firebase } = useContext(FirebaseContext);
     const { user } = useContext(UserContext);
@@ -27,7 +34,32 @@ export default function Header() {
     const closeDropdownPopover = () => {
         setDropdownPopoverShow(false);
     };
-    //bg colors
+    
+    //Post new fuckup
+    const handleNewFuckup = async (event) => {
+        event.preventDefault();
+
+            // firebase fuckup collection (create a document)
+            await firebase
+            .firestore()
+            .collection('fuckups')
+            .add({
+                // fuckupId: createdUserResult.user.uid, 
+                body: newFuckup,
+                takeAway: takeAway,
+                fullStory: fullStory,
+                dateCreated: Date.now(),
+                comments: [],
+                foundHelpful: [],
+                beenThere: [],
+                userId: 'ZyXrtGgEGBhs6fZY8rIjW7Un2ts2',
+                userHandle: 'Tiisetso Dinoko' 
+            })
+             .catch(err => {
+                setError(error.message);
+            });
+            setShowModal(false)        
+    };
         
     return (
         <header className="sticky top-0 z-50 w-full border-b border-indigo-500 h-14 bg-gradient-to-r from-indigo-800 via-purple-500 to-purple-800 ...  mb-8 px-2 sm:px-0">
@@ -71,69 +103,108 @@ export default function Header() {
                                     <div className="flex h-screen justify-center items-center">
                                         <div className="justify-end items-top pt-8 min-w-full flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
                                         >
-                                            <div className="relative my-6 mx-0 min-w-3/4 ml-0" style={{ minWidth: "35rem" }}>
+                                            <div className="relative my-6 mx-0 min-w-3/4 ml-0" style={{ minWidth: "42rem" }}>
                                             {/*content*/}
-                                                <div className="border-0 rounded shadow-lg relative ml-0 flex flex-col full bg-white outline-none focus:outline-none">
+                                                <div className="border-0 rounded shadow-lg relative ml-0 flex flex-col full bg-gray-50 outline-none focus:outline-none">
                                                     {/*header*/}
-                                                    <div className="flex items-start justify-end py-3 px-8 border-b border-solid border-blueGray-200 rounded">                                                        
-                                                        <img
-                                                            src={`/images/avatars/Tiisetso.jpg`}
-                                                            className="absolute top-0 left-0 ml-4 w-9 h-9 mt-1 rounded-full"
-                                                        />
+                                                    <div className="flex items-end justify-end py-3 px-8 border-b border-solid border-blueGray-200 rounded">
                                                         <button
                                                             className="border-b border-puple-400 text-indigo-400"
-                                                            onClick={() => setShowModal(false)}                                                        >
+                                                            onClick={() => setShowModal(false)}                                                        
+                                                        >
                                                             <span className="text-gray-500 border border-solid rounded-2xl border-Gray-400 text-sm block outline-none focus:outline-none pt-0">
                                                             ×
                                                             </span>
                                                         </button>
                                                     </div>
                                                     {/*body*/}
-                                                    <div className="relative absolute pt-3 pl-5">                                                        
-                                                        <textarea
-                                                            className="bg-transparent border-b border-indigo-200 pt-0 w-full text-black text-base outline-none"
-                                                            placeholder="Post a new fuckup"
-                                                            rows="2"
-                                                        ></textarea>                                                    
-                                                    </div>
-                                                    <div className="relative absolute pt-3 pl-5">                                                        
-                                                        <textarea
-                                                            className="bg-transparent border-b border-indigo-200 pt-3 w-full text-black text-base outline-none"
-                                                            placeholder="Takeaway"
-                                                            rows="3"
-                                                        ></textarea>                                                    
-                                                    </div>
-                                                    <div className="relative absolute pt-3 pl-5">                                                        
-                                                        <textarea
-                                                            className="bg-transparent border-b border-indigo-200 pt-3 w-full text-black text-base outline-none"
-                                                            placeholder="Full story"
-                                                            rows="3"
-                                                        ></textarea>                                                    
-                                                    </div>
-                                                    {/*footer*/}
-                                                    <div className="flex items-center justify-end py-1 px-6 border-t border-solid border-gray-200 rounded-b">
-                                                    <button
-                                                        className="text-gray-500 background-transparent font-medium uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"
-                                                        type="button"
-                                                        onClick={() => setShowModal(false)}
-                                                    >
-                                                        Save
-                                                    </button>
-                                                    <button
-                                                        className="transform rotate-90 bg-gradient-to-r from-indigo-200 to-purple-200 text-gray-600 border-solid border-purple-200 active:bg-emerald-600 font-medium uppercase text-sm px-1 py-1 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 tracking-wider"
-                                                        type="button"
-                                                        onClick={() => setShowModal(false)}
-                                                    >
-                                                        <svg 
-                                                            xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" 
-                                                            viewBox="0 0 24 21" stroke="currentColor">
-                                                            <path 
-                                                                stroke-linecap="round" stroke-linejoin="round" 
-                                                                stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" 
-                                                            />
-                                                        </svg>
-                                                    </button>
-                                                    </div>
+                                                                       
+                                                    <form onSubmit={handleNewFuckup} method="POST">
+                                                        <div className="relative absolute flex space-x-12 pt-3 my-4 mr-4 pl-3">
+                                                            <p className="bg-purple-500 flex justify-center rounded font-medium text-white text-sm h-7 w-20 pt-1 py-2 "
+                                                                style={{ minWidth: "6rem" }}
+                                                            >
+                                                                Fuckup
+                                                            </p>                                                        
+                                                            <textarea
+                                                                className="bg-gray-200 rounded pl-2 pt-2 w-full text-black text-sm outline-none"
+                                                                placeholder=""
+                                                                autoComplete="off"
+                                                                aria-label="Post a new fuckup"
+                                                                rows="3"
+                                                                onChange={({ target }) => setNewFuckup(target.value)} 
+                                                                value={newFuckup}
+                                                            ></textarea>                                                    
+                                                        </div>
+                                                        <div className="relative absolute flex space-x-12 pt-3 my-4 mr-4 pl-3">
+                                                            <p className="bg-purple-500 flex justify-center rounded font-medium text-white text-sm h-7 w-20 pt-1 py-2 "
+                                                                style={{ minWidth: "6rem" }}
+                                                            >
+                                                                Takeaway
+                                                            </p>                                                        
+                                                            <textarea
+                                                                className="bg-gray-200 rounded pl-2 pt-2 w-full text-black text-sm outline-none"
+                                                                placeholder=""
+                                                                autoComplete="off"
+                                                                aria-label="Takeaway"
+                                                                rows="3"
+                                                                onChange={({ target }) => setTakeAway(target.value)} 
+                                                                value={takeAway}
+                                                            ></textarea>                                                    
+                                                        </div>
+                                                        <div className="relative absolute flex space-x-12 pt-3 my-4 mr-4 pl-3">
+                                                            <p className="bg-purple-500 flex justify-center rounded font-medium text-white text-sm h-7 w-20 pt-1 py-2 "
+                                                                style={{ minWidth: "6rem" }}
+                                                            >
+                                                                Full story
+                                                            </p>                                                        
+                                                            <textarea
+                                                                className="bg-gray-200 rounded pl-2 pt-2 w-full text-black text-sm outline-none"
+                                                                placeholder=""
+                                                                autoComplete="off"
+                                                                aria-label="Full story"
+                                                                rows="4"
+                                                                onChange={({ target }) => setFullStory(target.value)} 
+                                                                value={fullStory}
+                                                            ></textarea>                                                    
+                                                        </div>
+                                                        {/*footer*/}
+                                                        <div className="grid flex pt-6 pb-4 grid-cols-2">
+                                                            <div className="col-span-1 card bordered pl-4 pt-1 flex justify-center">
+                                                                <div className="form-control mr-4">
+                                                                    <label class="cursor-pointer label">      
+                                                                        <span class="label-text text-purple-500 text-sm font-bold px-2"> Share with others </span> 
+                                                                        <input type="radio" name="opt" checked="checked" className="pt-3" class="radio radio-primary" value="" />
+                                                                    </label>
+                                                                </div>
+                                                                <div className="form-control ">
+                                                                    <label class="cursor-pointer label">      
+                                                                        <span class="label-text text-purple-500 text-sm font-bold px-2"> Show my name </span> 
+                                                                        <input type="radio" name="opt" checked="checked" className="pt-3" class="radio radio-primary" value="" />
+                                                                    </label>
+                                                                </div>
+                                                            </div>
+                                                            <div className="col-span-1">
+                                                                <div className="flex items-center justify-end py-1 px-6 rounded-b">
+                                                                    <button
+                                                                        className="bg-gray-100 text-gray-900 border border-gray-300 rounded font-medium px-6 py-auto h-6 text-sm outline-none focus:outline-none mr-4 mb-1 ease-linear transition-all duration-150"
+                                                                        type="button"
+                                                                        onClick={() => setShowModal(false)}
+                                                                    >
+                                                                        Save
+                                                                    </button>
+                                                                    <button
+                                                                        disabled={isInvalid}
+                                                                        className={`bg-purple-500 text-white border-solid border-purple-200 font-normal text-sm px-6 py-auto h-6 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 
+                                                                        ${isInvalid && 'opacity-80'} ease-linear transition-all duration-150 tracking-wider`}
+                                                                        type="submit"
+                                                                        onClick={handleNewFuckup}
+                                                                    > Post
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>    
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>

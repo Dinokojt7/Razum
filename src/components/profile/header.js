@@ -60,7 +60,7 @@ export default function Header({
                         />
                         <div className="container col-span-1 pr-3 mt-0">
                             <p className="font-bold text-lg">{fullName} </p>
-                            <p className="font-medium text-gray-900 text-sm tracking-wide">Founder</p>
+                            <p className="font-medium text-gray-900 text-sm tracking-wide">Founder {startupName}</p>
                             <p className="font-medium text-gray-900 pt-2 text-xs tracking-wide">Fuckups passed</p>
                             <p className="font-medium text-gray-900 text-xs tracking-wide">{followerCount} found {profileUserName}'s fuckups useful</p>            
                         </div>

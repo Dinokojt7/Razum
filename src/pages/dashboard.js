@@ -1,11 +1,9 @@
 import { useEffect } from "react";
-import FuckupFeed from "../components/fuckup-feed";
 import Fuckups from "../components/fuckup-feed/fuckups";
 import Header from "../components/header";
 import Home from "../components/Home";
 import Sidebar from "../components/sidebar";
 import Stage from "../components/stage";
-import BottomSidebar from "../components/user-profile";
 
 
 export default function Dashboard() {
