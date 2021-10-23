@@ -103,9 +103,9 @@ export default function Header() {
                                     <div className="flex h-screen justify-center items-center">
                                         <div className="justify-end items-top pt-8 min-w-full flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
                                         >
-                                            <div className="relative my-6 mx-0 min-w-3/4 ml-0" style={{ minWidth: "42rem" }}>
+                                            <div className="relative my-6 mx-0 min-w-3/4 ml-0" style={{ minWidth: "42rem"}}>
                                             {/*content*/}
-                                                <div className="border-0 rounded shadow-lg relative ml-0 flex flex-col full bg-gray-50 outline-none focus:outline-none">
+                                                <div className="bg-opacity-85 bg-white rounded shadow-lg relative ml-0 flex flex-col full border border-gray-400 outline-none focus:outline-none">
                                                     {/*header*/}
                                                     <div className="flex items-end justify-end py-3 px-8 border-b border-solid border-blueGray-200 rounded">
                                                         <button
