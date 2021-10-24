@@ -306,6 +306,7 @@ export default function Header() {
                                 <p>
                                     <Link to={ROUTES.LOGIN}>
                                         <button
+                                            className="bg-indigo-50 font-medium mr-2 rounded-xl text-sm bg-white tracking-wider text-purple-900 hover:bg-indigo-100 transition mt-1 py-1 px-4"
                                             type="button"
                                         >
                                             Sign In
@@ -313,6 +314,7 @@ export default function Header() {
                                     </Link>
                                     <Link to={ROUTES.SIGN_UP}>
                                         <button
+                                            className="bg-gray-400 font-medium mr-2 rounded-xl text-sm bg-white tracking-wider text-white hover:bg-indigo-100 hover:text-purple-900 transition mt-1 py-1 px-4"
                                             type="button"
                                         >
                                             Sign Up
