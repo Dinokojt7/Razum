@@ -59,10 +59,10 @@ export default function Header({
                             alt={`${user.userName} profile picture`}
                         />
                         <div className="container col-span-1 pr-3 mt-0">
-                            <p className="font-bold text-lg">{fullName} </p>
-                            <p className="font-medium text-gray-900 text-sm tracking-wide">Founder {startupName}</p>
-                            <p className="font-medium text-gray-900 pt-2 text-xs tracking-wide">Fuckups passed</p>
-                            <p className="font-medium text-gray-900 text-xs tracking-wide">{followerCount} found {profileUserName}'s fuckups useful</p>            
+                            <p className="font-bold text-gray-800 text-lg">{fullName} </p>
+                            <p className="font-bold text-gray-700 text-sm tracking-wide">Founder {startupName}</p>
+                            <p className="font-bold text-gray-600 pt-2 text-xs tracking-wide">Fuckups passed</p>
+                            <p className="font-bold text-gray-600 text-xs tracking-wide">{followerCount} found {profileUserName}'s fuckups useful</p>            
                         </div>
                     </div>                    
                 </div>
@@ -86,8 +86,8 @@ export default function Header({
             <div className="container col-span-3 mt-3 mr-4 mb-4">
                 <div className="grid grid-cols-2">
                     <div className="flex-grow-none ml-0  mt-2">
-                        <button className="bg-indigo-700 border border-purple-300 flex-grow-none  mr-0 h-6 rounded">
-                            <p className="font-medium text-white text-sm tracking-wide  px-1">My Takeaways</p>
+                        <button className="bg-gradient-to-b from-indigo-500 to-purple-600 ... mx-auto mt-1 ml-2 h-6 rounded">
+                            <p className="font-semibold text-gray-50 mx-0 text-sm tracking-wide px-1">My Takeaways</p>
                         </button>                    
                             {activeBtnFollow && (
                             <button 

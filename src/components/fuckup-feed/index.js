@@ -11,10 +11,15 @@ export default function Post({content}) {
     const handleFocus = () => commentInput.current.focus();
 
         return(
-            <div className=" rounded-lg col-span-2 pb-2 max-w-screen-md border mx-auto pt-2 mt-0 px-3 bg-gray-200 border-gray-200 mb-5">
-                <Header userName={content.userHandle} body={content.body} />
-                <Full takeAway={content.takeAway} />
-                <Options
+            <div className=" rounded-lg col-span-2 pb-2 max-w-screen-md lg:border mx-auto pt-2 mt-0 px-3 bg-gray-80 lg:bg-gray-100 border-gray-200 mb-5">
+                <Header
+                    userName={content.userHandle} 
+                    body={content.body} 
+                />
+                <Full 
+                    takeAway={content.takeAway} 
+                />
+                <Options 
                     docId={content.docId}
                     totalFoundHelpfuls={content.foundHelpful.length}
                     fuckupFoundHelpful={content.foundHelpful}

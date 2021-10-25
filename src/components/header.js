@@ -1,13 +1,11 @@
 import { createRef, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import FirebaseContext  from '../context/firebase';
-import { format } from 'date-fns';
 import UserContext from "../context/user";
 import * as ROUTES from "../constants/routes";
 import { createPopper } from "@popperjs/core";
 
-
-export default function Header() {
+export default function Header({userName}) {
     const [showModal, setShowModal] = useState(false);
     const [newFuckup, setNewFuckup] = useState('');
     const [takeAway, setTakeAway] = useState('');
@@ -38,11 +36,11 @@ export default function Header() {
     //Post new fuckup
     const handleNewFuckup = async (event) => {
         event.preventDefault();
-
+        
         // firebase fuckup collection (create a document)
         await firebase
         .firestore()
-        .collection('fuckups')
+        .collection('fuckups') 
         .add({
             // fuckupId: createdUserResult.user.uid, 
             body: newFuckup,
@@ -52,8 +50,8 @@ export default function Header() {
             comments: [],
             foundHelpful: [],
             beenThere: [],
-            userId: 'ZyXrtGgEGBhs6fZY8rIjW7Un2ts2',
-            userHandle: 'Tiisetso Dinoko' 
+            userId: user.uid,
+            userHandle: user.displayName 
         })
             .catch(err => {
             setError(error.message);
@@ -62,17 +60,17 @@ export default function Header() {
     };
         
     return (
-        <header className="sticky top-0 z-50 w-full lg:border-b border-indigo-500 h-14 lg:bg-gradient-to-r from-indigo-800 via-purple-700 to-purple-800 px-4 md:px-0 lg:px-0 mb-8 sm:px-0">
+        <header className="sticky top-0 z-50 w-full border-indigo-500 h-14 bg-gradient-to-b from-purple-600 via-purple-800 to-purple-600 px-4 md:px-0 lg:px-0 mb-8 sm:px-0">
                 <div className="container mx-auto max-w-screen-lg h-full">
                     <div className="flex justify-between h-full space-x-24">
-                        <div className="text-purple-900 lg:text-indigo-50 text-center lg:border-r border-indigo-300 flex items-center align-items cursor-pointer">
+                        <div className="text-gray-100 lg:text-indigo-50 text-center lg:border-r border-indigo-300 flex items-center align-items cursor-pointer">
                             <h1 className="flex px-3 uppercase tracking-wider text-xl font-bold justify-center w-full">
                                 <Link to={ROUTES.DASHBOARD}>
                                     Razum
                                 </Link>   
                             </h1>
                         </div>
-                        <div className="text-white text-center flex items-center space-x-6 align-items">
+                        <div className="text-white  flex justify-end items-center space-x-6">
                             { user ? (
                                 <>
                                     <Link to={ROUTES.DASHBOARD} 
@@ -103,19 +101,19 @@ export default function Header() {
                                     </button>
                                                                     
                                     {showModal ? (
-                                        <div className="flex h-screen justify-center items-center">
+                                        <div className="flex justify-center items-center">
                                             <div className="justify-end items-top pt-8 min-w-full flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
                                             >
                                                 <div className="relative my-6 mx-0 min-w-3/4 ml-0" style={{ minWidth: "42rem"}}>
                                                 {/*content*/}
-                                                    <div className="bg-opacity-85 bg-white rounded shadow-lg relative ml-0 flex flex-col full border border-gray-400 outline-none focus:outline-none">
+                                                    <div className="bg-opacity-95 bg-gray-100  rounded shadow-lg relative ml-0 flex flex-col full border border-gray-400 outline-none focus:outline-none">
                                                         {/*header*/}
-                                                        <div className="flex items-end justify-end py-3 px-8 border-b border-solid border-blueGray-200 rounded">
+                                                        <div className="flex items-end justify-end py-1 px-8 border-b border-solid border-blueGray-200 rounded">
                                                             <button
                                                                 className="border-b border-puple-400 text-indigo-400"
                                                                 onClick={() => setShowModal(false)}                                                        
                                                             >
-                                                                <span className="text-gray-500 border border-solid rounded-2xl border-Gray-400 text-sm block outline-none focus:outline-none pt-0">
+                                                                <span className="text-gray-500 border border-solid rounded-2xl border-gray-300 text-sm block outline-none focus:outline-none pt-0">
                                                                 ×
                                                                 </span>
                                                             </button>
@@ -123,30 +121,30 @@ export default function Header() {
                                                         {/*body*/}
                                                                         
                                                         <form onSubmit={handleNewFuckup} method="POST">
-                                                            <div className="relative absolute flex space-x-12 pt-3 my-4 mr-4 pl-3">
-                                                                <p className="bg-purple-500 flex justify-center rounded font-medium text-white text-sm h-7 w-20 pt-1 py-2 "
+                                                            <div className="relative absolute bg-opacity-90 bg-gray-100  flex space-x-12 pt-3 my-0 mr-4 pl-3">
+                                                                <p className="bg-gradient-to-b from-purple-500 via-purple-700 to-purple-500 flex justify-center rounded font-medium text-white text-sm h-7 w-20 pt-1 py-2 "
                                                                     style={{ minWidth: "6rem" }}
                                                                 >
                                                                     Fuckup
                                                                 </p>                                                        
                                                                 <textarea
-                                                                    className="bg-gray-200 rounded pl-2 pt-2 w-full text-black text-sm outline-none"
+                                                                    className="bg-opacity-60 bg-gray-300 rounded pl-2 pt-1 w-full text-black text-sm resize-none outline-none"
                                                                     placeholder=""
                                                                     autoComplete="off"
                                                                     aria-label="Post a new fuckup"
-                                                                    rows="3"
+                                                                    rows="2"
                                                                     onChange={({ target }) => setNewFuckup(target.value)} 
                                                                     value={newFuckup}
                                                                 ></textarea>                                                    
                                                             </div>
-                                                            <div className="relative absolute flex space-x-12 pt-3 my-4 mr-4 pl-3">
-                                                                <p className="bg-purple-500 flex justify-center rounded font-medium text-white text-sm h-7 w-20 pt-1 py-2 "
+                                                            <div className="relative absolute flex space-x-12 pt-1 my-4 mr-4 pl-3">
+                                                                <p className="bg-gradient-to-b from-purple-500 via-purple-700 flex justify-center rounded font-medium text-white text-sm h-7 w-20 pt-1 py-2 "
                                                                     style={{ minWidth: "6rem" }}
                                                                 >
                                                                     Takeaway
                                                                 </p>                                                        
                                                                 <textarea
-                                                                    className="bg-gray-200 rounded pl-2 pt-2 w-full text-black text-sm outline-none"
+                                                                    className="bg-opacity-60 bg-gray-300 rounded pl-2 pt-2 w-full text-black text-sm outline-none"
                                                                     placeholder=""
                                                                     autoComplete="off"
                                                                     aria-label="Takeaway"
@@ -155,35 +153,35 @@ export default function Header() {
                                                                     value={takeAway}
                                                                 ></textarea>                                                    
                                                             </div>
-                                                            <div className="relative absolute flex space-x-12 pt-3 my-4 mr-4 pl-3">
-                                                                <p className="bg-purple-500 flex justify-center rounded font-medium text-white text-sm h-7 w-20 pt-1 py-2 "
+                                                            <div className="relative absolute flex space-x-12 pt-1 my-4 mr-4 pl-3">
+                                                                <p className="bg-gradient-to-b from-purple-500 via-purple-700 flex justify-center rounded font-medium text-white text-sm h-7 w-20 pt-1 py-2 "
                                                                     style={{ minWidth: "6rem" }}
                                                                 >
                                                                     Full story
                                                                 </p>                                                        
                                                                 <textarea
-                                                                    className="bg-gray-200 rounded pl-2 pt-2 w-full text-black text-sm outline-none"
+                                                                    className="bg-opacity-60 bg-gray-300 rounded pl-2 pt-2 w-full text-black text-sm outline-none"
                                                                     placeholder=""
                                                                     autoComplete="off"
                                                                     aria-label="Full story"
-                                                                    rows="4"
+                                                                    rows="3"
                                                                     onChange={({ target }) => setFullStory(target.value)} 
                                                                     value={fullStory}
                                                                 ></textarea>                                                    
                                                             </div>
                                                             {/*footer*/}
-                                                            <div className="grid flex pt-6 pb-4 grid-cols-2">
+                                                            <div className="grid bg-opacity-90 bg-gray-100 flex pt-2 pb-4 grid-cols-2">
                                                                 <div className="col-span-1 card bordered pl-4 pt-1 flex justify-center">
                                                                     <div className="form-control mr-4">
                                                                         <label class="cursor-pointer label">      
-                                                                            <span class="label-text text-purple-500 text-sm font-bold px-2"> Share with others </span> 
-                                                                            <input type="radio" name="opt" checked="checked" className="pt-3" class="radio radio-primary" value="" />
+                                                                            <span class="label-text text-purple-900 antialiased tracking-wide text-sm font-semibold px-2"> Share with others </span> 
+                                                                            <input type="checkbox" class="border-purple-500 checked:bg-purple-600 checked:border-purple-500 " value=""></input>
                                                                         </label>
                                                                     </div>
                                                                     <div className="form-control ">
                                                                         <label class="cursor-pointer label">      
-                                                                            <span class="label-text text-purple-500 text-sm font-bold px-2"> Show my name </span> 
-                                                                            <input type="radio" name="opt" checked="checked" className="pt-3" class="radio radio-primary" value="" />
+                                                                            <span class="label-text text-purple-900 tracking-wide antialiased text-sm font-semibold px-2"> Show my name </span> 
+                                                                            <input type="checkbox" class="border-gray-300 checked:bg-purple-600 checked:border-purple-500" value=""></input>
                                                                         </label>
                                                                     </div>
                                                                 </div>
@@ -198,7 +196,7 @@ export default function Header() {
                                                                         </button>
                                                                         <button
                                                                             disabled={isInvalid}
-                                                                            className={`bg-purple-500 text-white border-solid border-purple-200 font-normal text-sm px-6 py-auto h-6 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 
+                                                                            className={`bg-gradient-to-b from-indigo-500 via-purple-700 antialiased text-white border-solid border-purple-200 font-normal text-sm px-6 py-auto h-6 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 
                                                                             ${isInvalid && 'opacity-80'} ease-linear transition-all duration-150 tracking-wider`}
                                                                             type="submit"
                                                                             onClick={handleNewFuckup}
@@ -243,23 +241,14 @@ export default function Header() {
                                     <div className="flex h-screen justify-center items-center">
                                         <div className={
                                                 (dropdownPopoverShow ? "block " : "hidden ")  +
-                                                "bg-white text-base z-50 fixed float-left mt-40 pb-2 list-none text-left rounded shadow-lg"
+                                                "bg-white text-base z-50 fixed float-left mt-44 lg:mt-40 pb-2 list-none text-left rounded shadow-lg"
                                             }
                                             style={{ minWidth: "25rem" }}
-                                        >
-                                            <div className="flex items-center lg:hidden cursor-pointer">
-                                                <Link to={`./p/${user.displayName}`}>
-                                                    <img 
-                                                        className={"rounded-full bg-black-200 h-7 w-7 flex"}
-                                                        src={`/images/avatars/Tiisetso.jpg`}
-                                                        alt={`${user.displayName} profile`}
-                                                    />
-                                                </Link>
-                                            </div> 
+                                        > 
                                             <button
                                                     type="button"
                                                     className={
-                                                        "flex text-sm py-2 hover:bg-indigo-400 hover:text-white w-full px-1 text-gray-600 font-normal " }
+                                                        "flex text-sm py-1 hover:bg-indigo-400 hover:text-white w-full px-1 text-gray-600 font-normal " }
                                                     //Sign out
                                                     onClick={e => e.preventDefault()}
                                                     onKeyDown={(e) => {
@@ -301,11 +290,11 @@ export default function Header() {
                                                         } 
                                                     }}
                                                 >
-                                                    <p className="px-3">Logout</p>   
+                                                    <p className="px-3 h-8 pt-2">Logout</p>   
                                                     <svg
-                                                        className="pt-1" 
+                                                        className="pt-3" 
                                                         xmlns="http://www.w3.org/2000/svg" width="18" 
-                                                        height="18" viewBox="0 0 24 24" fill="none" 
+                                                        height="25" viewBox="0 0 24 24" fill="none" 
                                                         stroke="#4B5563" stroke-width="2.5" stroke-linecap="round" 
                                                         stroke-linejoin="round"><path d="M16 17l5-5-5-5M19.8 12H9M10 3H4v18h6"/>
                                                     </svg>                                        

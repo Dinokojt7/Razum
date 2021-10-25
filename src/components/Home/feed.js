@@ -13,8 +13,8 @@ export default function Market ({ market }) {
                     MARKET: 
                 </p>
             </div>
-            <div className="border border-indigo-300 bg-gradient-to-r from-indigo-700 to-purple-700 ... mx-auto mt-1 ml-2 h-7 rounded ">                           
-            <p className="font-normal text-white mx-2 text-base tracking-wide px-1">{market}</p>
+            <div className="bg-gradient-to-b from-indigo-500 to-purple-600 ... mx-auto mt-1 ml-2 h-7 rounded ">                           
+            <p className="font-semibold text-gray-50 mx-2 text-base tracking-wide px-1">{market}</p>
             </div>
             </div>
                

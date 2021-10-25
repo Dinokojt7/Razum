@@ -43,7 +43,7 @@ export default function Options({docId, totalBeenTheres,fuckupBeenThere, fuckupF
 
     return (
         <>
-            <div className="flex column justify-between pt-6">
+            <div className="hidden lg:flex flex column justify-between pt-6">
                 <div className="flex  space-x-10">
                     <button
                         className="flex column space-x-1 text-xs font-medium mr-1 select-none cursor-pointer"                        

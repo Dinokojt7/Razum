@@ -244,9 +244,9 @@ export default function Login() {
                                 </div>  
                             </div>  
                                     
-                            <div className="bg-white flex justify-center mx-auto flex-col px-4 my-auto w-5/5 h-auto my-0 px-1 py-6 md:py-12 lg:py-12 md:flex 
+                            <div className="bg-white flex justify-center mx-auto flex-col px-4 my-auto w-5/5 h-auto my-0 px-1 py-5 md:py-12 lg:py-14 md:flex 
                                 md:w-2/5 md:mx-2 md:px-4 lg:flex lg:w-2/5 lg:mx-2 lg:px-4 rounded-lg md:shadow-2xl lg:shadow-2xl">
-                                <div class="p-1 text-center pb-14">
+                                <div class="p-1 text-center pb-13">
                                     <h6 class="text-gray-800 font-medium text-xl">Login into your account</h6>
                                     <p className="text-xs text-gray-400 pt-3">
                                         Don't have an account yet?{` `}

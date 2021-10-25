@@ -115,7 +115,7 @@ export async function getSuggestedProfiles(userId, following) {
 
       const userFollowedFuckups = result.docs.map((fuckup) => ({
         ...fuckup.data(),
-        docId: fuckup.Id
+        docId: fuckup.Id 
       }));
       
       // return userFollowedFuckups; 

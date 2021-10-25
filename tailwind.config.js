@@ -7,6 +7,13 @@ module.exports = {
       './src/**/*.js', './src/**/**/*.js'
     ]
   },
+  variants: {
+    extend: {
+      display: ['group-hover'],
+      backgroundColor: ['checked'],
+      borderColor: ['checked'],
+    },
+  },
   presets: [],
   darkMode: false, // or 'media' or 'class'
   theme: {

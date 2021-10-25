@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import FirebaseContext from "../context/firebase";
 import * as ROUTES from '../constants/routes';
 import { doesUserNameExist } from '../services/firebase';
-import {ReactComponent as ReactLearn} from './learn.svg';
+import {ReactComponent as Business1} from './business1.svg';
 
 // TODO: Add anonymous SignUp 
 
@@ -68,7 +68,7 @@ export default function SignUp() {
         document.title = 'Razum';
     }, []);                                  
 
-   return (
+    return (
     <div class="w-full lg:bg-gradient-to-r from-purple-500 via-indigo-400 to-indigo-500 space-y-0 h-screen">   
     <nav class="sticky w-full h-auto px-2 sm:px-0">
         <div class="container flex justify-between py-1 mx-auto">
@@ -96,7 +96,7 @@ export default function SignUp() {
                 <p className="hidden lg:flex text-white text-center flex font-semibold text-5xl md:text-5xl lg:text-5xl flex items-center mx-auto">
                     Join the experience.
                 </p>
-                <p className="hidden lg:flex text-white text-left flex font-normal text-base md:text-base lg:text-base flex items-center w-3/5 pt-3 pr-18">
+                <p className="hidden lg:flex text-white text-left flex font-semibold text-base md:text-base lg:text-base flex items-center w-3/5 pt-3 pr-18">
                 We're a community, that's creating, exploring and sharing our encounters with 
                 one another as founders. Join us and find relevant stories in seconds 
                 by filtering market and stage. See where founders are heading and what they 
@@ -105,9 +105,9 @@ export default function SignUp() {
                 </p>
             </div>
             <div className="container pt-0 mx-auto px-2 lg:px-auto lg:pt-5 flex lg:space-x-12 lg:justify-start">
-                <div className="hidden lg:flex"><ReactLearn className="pr-12" style={{ width: "400px", height: "400px"}}  /></div>                
+                <div className="hidden lg:flex"><Business1 className="pr-12" style={{ width: "400px", height: "400px"}}  /></div>                
                 
-                <div className="lg:bg-white container flex items-center justify-center mx-auto flex-col 
+                <div className="lg:bg-gray-50 container flex items-center justify-center mx-auto flex-col 
                     px-4 my-auto w-5/5 h-auto px-1 pb-4 md:w-2/5 md:mx-2 md:px-4 md:shadow-2xl md:flex md:justify-center lg:flex lg:w-2/5 lg:mx-2 lg:px-4 rounded-lg lg:shadow-2xl"> 
                     <div class="text-center pb-3 lg:pb-3">  
                         <h4 class="text-gray-800 font-medium text-xl pt-2">Create your account</h4>
@@ -127,7 +127,7 @@ export default function SignUp() {
                                 aria-label="Enter your full name"          
                                 type="text"
                                 placeholder="Full Name"
-                                className="text-sm text-gray-base border-gray-400 lg:bg-gray-100 border lg:border-gray-400 h-8 py-2 pl-2 font-base rounded-full mb-5 lg:h-8 lg:py-2 lg:pl-3 lg:mb-5 focus:outline-none focus:ring-0.5 focus:border-purple-500" 
+                                className="text-sm text-gray-base border-gray-400 lg:bg-gray-50  border lg:border-gray-400 h-8 py-2 pl-2 font-base rounded-full mb-5 lg:h-8 lg:py-2 lg:pl-3 lg:mb-5 focus:outline-none focus:ring-0.5 focus:border-purple-500" 
                                 onChange={({ target }) => setFullName(target.value)}
                                 value={fullName}
                             /> <span className="px-1"></span> 
@@ -135,7 +135,7 @@ export default function SignUp() {
                                 aria-label="Enter your username"          
                                 type="text"
                                 placeholder="Username"
-                                className="text-sm hidden lg:bg-gray-100 border-gray-400 border lg:border-gray-400 lg:flex text-gray-base h-8 py-2 pl-3 font-base rounded-full mb-5 
+                                className="text-sm hidden lg:bg-gray-50 border-gray-400 border lg:border-gray-400 lg:flex text-gray-base h-8 py-2 pl-3 font-base rounded-full mb-5 
                                 focus:outline-none focus:ring-0.5 focus:border-purple-500"
                                 onChange={({ target }) => setUserName(target.value)}
                                 value={userName}
@@ -145,7 +145,7 @@ export default function SignUp() {
                                 aria-label="Enter your username"          
                                 type="text"
                                 placeholder="Username"
-                                className="text-sm lg:hidden lg:bg-gray-100 border-gray-400 border lg:border-gray-400 text-gray-base h-8 py-2 pl-3 font-base rounded-full mb-5 
+                                className="text-sm lg:hidden lg:bg-gray-50 border-gray-400 border lg:border-gray-400 text-gray-base h-8 py-2 pl-3 font-base rounded-full mb-5 
                                 focus:outline-none focus:ring-0.5 focus:border-purple-500"
                                 onChange={({ target }) => setUserName(target.value)}
                                 value={userName}
@@ -154,7 +154,7 @@ export default function SignUp() {
                             aria-label="Enter your email address"          
                             type="text"
                             placeholder="Email address"
-                            className="text-sm text-gray-base lg:bg-gray-100 border-gray-400 border lg:border-gray-400 pr-4 h-8 py-2  pl-3 font-base rounded-full mb-5
+                            className="text-sm text-gray-base lg:bg-gray-50 border-gray-400 border lg:border-gray-400 pr-4 h-8 py-2  pl-3 font-base rounded-full mb-5
                             focus:outline-none focus:ring-0.5 focus:border-purple-500"
                             onChange={({ target }) => setEmailAddress(target.value)}
                             value={emailAddress}
@@ -163,12 +163,12 @@ export default function SignUp() {
                             aria-label="Enter your password"
                             type="password"
                             placeholder="Password"
-                            className="focus:border-blue-600 lg:bg-gray-100 border-gray-400 border lg:border-gray-400 text-sm text-gray-base pr-10 mr-3 h-8 py-2  pl-3 font-base rounded-full mb-7
+                            className="focus:border-blue-600 lg:bg-gray-50 border-gray-400 border lg:border-gray-400 text-sm text-gray-base pr-10 mr-3 h-8 py-2  pl-3 font-base rounded-full mb-7
                             focus:outline-none focus:ring-0.5 focus:border-purple-500"
                             onChange={({ target }) => setPassword(target.value)}
                             value={password}
                         />
-                        <label className="text-sm text-purple-900 tracking-wider w-full mr-4 bg-white py-1 pt-2 p-1 pl-3 font-medium border border-purple-400 px-3 rounded-full mb-7">
+                        <label className="text-sm text-gray-500 tracking-wider w-full mr-4 bg-white py-1 pt-2 p-1 pl-3 font-medium border border-gray-400 px-3 rounded-full mb-7">
                                 <select className="active:ring-2 active:ring-white" onChange={({ target }) => setMarket(target.value)}>
                                 <option value="" className="bg-gray-200 text-black uppercase font-medium">Select Your Market</option>
                                 <option value="SaaS" className="text-black">SaaS</option>
@@ -199,8 +199,8 @@ export default function SignUp() {
                             aria-label="Company Name"
                             type="text"
                             placeholder="Company Name"
-                            className="focus:border-blue-600 border-gray-400 lg:bg-gray-100 border lg:border-gray-400 text-sm text-gray-base pr-10 mr-auto w-full h-8 py-2  pl-3 mt-6 font-base rounded-full mb-0
-                            focus:outline-none focus:ring-0.5 focus:border-purple-500"
+                            className="focus:border-blue-600 border-gray-400 lg:bg-gray-50 border lg:border-gray-400 text-sm text-gray-base 
+                            pr-10 mr-auto w-full h-8 py-2  pl-3 mt-6 font-base rounded-full mb-0 focus:outline-none focus:ring-0.5 focus:border-purple-500"
                             onChange={({ target }) => setcompany(target.value)}
                             value={company}
                         />                                
