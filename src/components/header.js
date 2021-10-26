@@ -64,7 +64,7 @@ export default function Header({userName}) {
     };
         
     return (
-        <header className="sticky top-0 z-50 w-full border-indigo-500 h-14 bg-gradient-to-r from-purple-700 to-purple-800 px-4 md:px-0 lg:px-0 mb-8 sm:px-0">
+        <header className="sticky top-0 z-50 w-full border-indigo-500 h-14 bg-purple-800 px-4 md:px-0 lg:px-0 mb-8 sm:px-0">
                 <div className="container sticky top-0 mx-auto max-w-screen-lg h-full">
                     <div className="flex justify-between h-full space-x-24">
                         <div className="text-gray-100 lg:text-indigo-50 text-center lg:border-r border-indigo-300 flex items-center align-items cursor-pointer">
@@ -126,7 +126,7 @@ export default function Header({userName}) {
                                                                         
                                                         <form onSubmit={handleNewFuckup} method="POST">
                                                             <div className="relative absolute bg-opacity-90 bg-gray-100  flex space-x-12 pt-3 my-0 mr-4 pl-3">
-                                                                <p className="bg-gradient-to-b from-purple-500 via-purple-700 to-purple-500 flex justify-center rounded font-medium text-white text-sm h-7 w-20 pt-1 py-2 "
+                                                                <p className="bg-gradient-to-b from-purple-500 via-purple-700 to-purple-600 to-purple-500 flex justify-center rounded font-medium text-white text-sm h-7 w-20 pt-1 py-2 "
                                                                     style={{ minWidth: "6rem" }}
                                                                 >
                                                                     Fuckup
@@ -142,7 +142,7 @@ export default function Header({userName}) {
                                                                 ></textarea>                                                    
                                                             </div>
                                                             <div className="relative absolute flex space-x-12 pt-1 my-4 mr-4 pl-3">
-                                                                <p className="bg-gradient-to-b from-purple-500 via-purple-700 flex justify-center rounded font-medium text-white text-sm h-7 w-20 pt-1 py-2 "
+                                                                <p className="bg-gradient-to-b from-purple-500 via-purple-700 to-purple-600 flex justify-center rounded font-medium text-white text-sm h-7 w-20 pt-1 py-2 "
                                                                     style={{ minWidth: "6rem" }}
                                                                 >
                                                                     Takeaway
@@ -158,7 +158,7 @@ export default function Header({userName}) {
                                                                 ></textarea>                                                    
                                                             </div>
                                                             <div className="relative absolute flex space-x-12 pt-1 my-4 mr-4 pl-3">
-                                                                <p className="bg-gradient-to-b from-purple-500 via-purple-700 flex justify-center rounded font-medium text-white text-sm h-7 w-20 pt-1 py-2 "
+                                                                <p className="bg-gradient-to-b from-purple-500 via-purple-700 to-purple-600 flex justify-center rounded font-medium text-white text-sm h-7 w-20 pt-1 py-2 "
                                                                     style={{ minWidth: "6rem" }}
                                                                 >
                                                                     Full story
@@ -200,7 +200,7 @@ export default function Header({userName}) {
                                                                         </button>
                                                                         <button
                                                                             disabled={isInvalid}
-                                                                            className={`bg-gradient-to-b from-indigo-500 via-purple-700 antialiased text-white border-solid border-purple-200 font-normal text-sm px-6 py-auto h-6 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 
+                                                                            className={`bg-gradient-to-b from-indigo-500 via-purple-700 to-purple-600 antialiased text-white border-solid border-purple-200 font-normal text-sm px-6 py-auto h-6 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 
                                                                             ${isInvalid && 'opacity-80'} ease-linear transition-all duration-150 tracking-wider`}
                                                                             type="submit"
                                                                             onClick={handleNewFuckup}

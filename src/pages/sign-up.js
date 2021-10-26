@@ -97,7 +97,7 @@ export default function SignUp() {
     </nav>        
         <div className="container bg-gray-70 mx-auto w-full items-center h-screen"> 
              <div className=" lg:hidden flex justify-center md:min-w-full md:px-10 md:flex lg:min-w-full pt-8 px-0 ">
-                <p className="lg:hidden text-gray-800 text-center flex font-semibold text-4xl md:text-5xl lg:text-5xl flex items-center mx-auto">
+                <p className="lg:hidden text-gray-500 text-center flex font-semibold text-3xl md:text-5xl lg:text-5xl flex items-center mx-auto">
                     Join the experience.
                 </p>
             </div>
@@ -119,7 +119,7 @@ export default function SignUp() {
                 <div className="lg:bg-gray-50 container flex items-center justify-center mx-auto flex-col 
                     px-4 my-auto w-5/5 h-auto px-1 pb-4 md:w-2/5 md:mx-2 md:px-4 md:shadow-2xl md:flex md:justify-center lg:flex lg:w-2/5 lg:mx-2 lg:px-4 rounded-lg lg:shadow-2xl"> 
                     <div class="text-center pb-3 lg:pb-3">  
-                        <h4 class="text-gray-800 font-medium text-xl pb-2 pt-0 lg:pt-2">Create your account</h4>
+                        <h4 class="text-gray-500 font-medium text-xl pb-2 pt-0 lg:pt-2">Create your account</h4>
                         <p className="text-xs text-gray-400 pb-4">
                             Have an account?{` `}
                             <Link to={ROUTES.LOGIN} className="font-bold tracking-wider text-indigo-500">
@@ -188,7 +188,7 @@ export default function SignUp() {
                             value={password}
                         />
                         <label className="w-full text-sm text-gray-500 tracking-wider bg-white h2 py-3 lg:py-2 p-1 pl-3 font-medium border border-gray-300 px-10 rounded-full">
-                                <select className="focus:outline-none active:bg-purple-700" onChange={({ target }) => setMarket(target.value)}>
+                                <select className="focus:outline-none active:bg-none" onChange={({ target }) => setMarket(target.value)}>
                                 <option value="" className="bg-gray-200 text-black uppercase font-medium">Select Your Market</option>
                                 <option value="SaaS" className="text-black">SaaS</option>
                                 <option value="DevOps and Cloud" className="text-black">DevOps and Cloud</option>
@@ -227,7 +227,7 @@ export default function SignUp() {
                             disabled={isInvalid}
                             type="button"
                             onClick={handleSignUp}
-                            className={`bg-gradient-to-r from-purple-500 to-indigo-500 text-white w-full rounded-full text-sm  mx-auto mt-6 px-12 font-medium h-9 py-2 lg:py-2 
+                            className={`bg-gradient-to-r from-purple-500 to-indigo-500 text-white w-full rounded-full text-sm  mx-auto mt-6 px-12 font-medium h-12 lg:h-9 py-2 lg:py-2 
                             ${isInvalid && 'opacity-80'}`}
                         >
                             {loading ? (<Circles />) : (<span>Sign Up</span>)}

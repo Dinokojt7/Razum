@@ -38,6 +38,7 @@ export default function Login() {
         } catch (error) {
           setEmailAddress('');
           setPassword('');
+          setAnimateTrue(false);
           setError(error.message);          
         }
       };
@@ -69,7 +70,7 @@ export default function Login() {
                             <p className="hidden lg:block text-gray-800 text-center w-full flex font-bold lg:font-semibold text-3xl lg:text-5xl flex items-center">
                                 Use obstacles to your advantage
                             </p>
-                            <p className="lg:hidden text-gray-800 text-center w-full justify-center flex font-semibold text-4xl flex items-center">
+                            <p className="lg:hidden text-gray-500 text-center w-full justify-center flex font-semibold text-4xl flex items-center">
                                 Welcome back.
                             </p>
                         </div>
@@ -251,7 +252,7 @@ export default function Login() {
                             <div className="bg-white flex justify-center mx-auto flex-col px-4 my-auto w-5/5 h-auto my-0  py-6 md:py-12 lg:py-12 md:flex 
                                 md:w-3/5 md:mx-2 md:px-4 lg:flex lg:w-2/5 lg:mx-2 lg:px-4 rounded-lg md:shadow-2xl lg:shadow-2xl">
                                 <div class="text-center pb-13">
-                                    <h6 class="text-gray-800 font-medium text-xl">Login into your account</h6>
+                                    <h6 class="text-gray-500 font-medium text-xl">Login into your account</h6>
                                     <p className="text-xs text-gray-400 pb-8 pt-3">
                                         Don't have an account yet?{` `}
                                         <Link to={ROUTES.SIGN_UP} className="font-bold text-indigo-500">
@@ -289,7 +290,7 @@ export default function Login() {
                                         disabled={isInvalid}
                                         type="submit"
                                         onClick={handleLogin}
-                                        className={`bg-gradient-to-r from-purple-700 to-indigo-600 text-white w-full rounded-full text-sm  p-4  font-medium py-2
+                                        className={`bg-gradient-to-r from-purple-700 to-indigo-600 text-white w-full rounded-full text-sm  p-4 h-12 font-medium py-2
                                         ${isInvalid && 'opacity-80'}`}
                                     >   {animateTrue ? (
                                             <Circles />
