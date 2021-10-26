@@ -11,10 +11,10 @@ export default function NotFound() {
 
     return (
         <div className="bg-gray-background">       
-            <header className="bg-gray-50 sticky top-0 z-50 w-full h-14 lg:bg-gradient-to-b from-purple-50 via-purple-100 to-purple-50 px-4 md:px-0 lg:px-0 mb-8 sm:px-0">
+            <header className="bg-gray-50 sticky top-0 z-50 w-full lg:bg-gradient-to-b from-purple-50 via-purple-100 to-purple-50 h-14 px-4 md:px-0 lg:px-0 mb-8 sm:px-0">
                 <div className="container mx-auto max-w-screen-lg h-full">
                     <div className="flex justify-between h-full space-x-24">
-                        <div className="text-gray-700 text-center  flex items-center align-items cursor-pointer">
+                        <div className="text-gray-700 text-center flex items-center align-items cursor-pointer">
                             <h1 className="flex px-3 uppercase tracking-wider text-xl font-bold justify-center w-full">
                                 <Link to={ROUTES.DASHBOARD}>
                                     Razum
@@ -36,19 +36,25 @@ export default function NotFound() {
         </header>
       
             <div className="mx-auto  ">            
-                <p className="text-center text-4xl font-bold mb-3 tracking-wide text-gray-700">
+                <p className="hidden lg:flex justify-center text-center text-4xl font-bold mb-3 tracking-wide text-gray-700">
                     OOPS... This ain't a fuckup right?
                 </p>
-                <p className="text-center text-3xl font-bold mb-3 tracking-wide text-gray-600">
+                <p className="md:hidden lg:hidden text-center text-4xl font-bold mb-3 tracking-wide text-gray-700">
+                    Ugh! It's a fuckup
+                </p>
+                <p className="hidden lg:flex justify-center text-center text-3xl font-bold mb-3 tracking-wide text-gray-600">
                     Ugh! It's a 404 Not Found Error
                 </p>
-                <p className="text-center text-2xl font-bold mb-3 tracking-wide text-gray-500">
+                <p className="md:hidden lg:hidden text-center text-3xl font-bold mb-3 tracking-wide text-gray-600">
+                   404 Not Found 
+                </p>
+                <p className="text-center text-xl lg:text-2xl font-bold mb-3 tracking-wide text-gray-500">
                     Only One Takeaway
                 </p>
-                <p className="text-center text-xl font-bold mb-3 tracking-wide text-gray-400">
+                <p className="text-center lg lg:text-xl font-bold mb-3 tracking-wide text-gray-400">
                     Double Check 
                 </p>
-                <p className="text-center text-lg font-bold tracking-wide text-gray-300">
+                <p className="text-center base lg:text-lg font-bold tracking-wide text-gray-300">
                     Your{` `} 
                     <Link to={ROUTES.DASHBOARD} className="text-center text-base font-bold tracking-wide text-red-400">
                         URL
@@ -57,8 +63,7 @@ export default function NotFound() {
             </div>
             <div className="flex mx-auto justify-center">
                 <FourOFour className="" style={{ width: "500px", height: "500px"}}  />
-            </div>
-            <div className="mt-0"></div>       
+            </div>                   
         </div>
     );
 }

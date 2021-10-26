@@ -43,10 +43,10 @@ export default function Options({docId, totalBeenTheres,fuckupBeenThere, fuckupF
 
     return (
         <>
-            <div className="hidden lg:flex flex column justify-between pt-6">
-                <div className="flex  space-x-10">
+            <div className=" bg-purple-100 lg:flex rounded flex column lg:bg-transparent justify-between h-7 mt-1 lg:h-0 lg:pb-3 lg:mt-6">
+                <div className="flex space-x-10">
                     <button
-                        className="flex column space-x-1 text-xs font-medium mr-1 select-none cursor-pointer"                        
+                        className="flex column space-x-1 text-xs font-medium mr-1 pl-1 pt-1 lg:pl-0 lg:mr-0 lg:pt-0 select-none cursor-pointer"                        
                     >
                         <svg
                             onClick={handleFocus}
@@ -62,7 +62,7 @@ export default function Options({docId, totalBeenTheres,fuckupBeenThere, fuckupF
                         >
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                         </svg>
-                        <div>{foundHelpful === 1 ? `${foundHelpful} comment` : `${foundHelpful} comments`}</div>
+                        <div className="hidden md:block lg:block">{foundHelpful === 1 ? `${foundHelpful} comment` : `${foundHelpful} comments`}</div>
                     </button>                 
                     <button
                         type="button"
@@ -89,29 +89,29 @@ export default function Options({docId, totalBeenTheres,fuckupBeenThere, fuckupF
                             ${toggleBeenThere ? 'text-indigo-500' : 'text-black-400'}`}
                     >
                             {foundHelpful === 0 ? `been there` : `${foundHelpful} been there`}
-                    </button>
-                    <div className="flex justify-end">
-                    <button
-                        type="button"
-                        onClick={handleToggleBeenThere}
-                        onKeyDown ={(e) => {
-                            if (e.key === 'Enter') {
-                                handleToggleBeenThere();
-                            }
-                        }}
-                        className="flex column space-x-1 text-xs font-medium select-none cursor-pointer flex justify-end"
-                    >
-                        <p>full story</p>
-                        <svg 
-                            xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" 
-                            viewBox="0 0 20 16" fill="currentColor">
-                            <path fill-rule="evenodd" 
-                                d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" 
-                                clip-rule="evenodd" 
+                    </button>                  
+                </div>
+                <div className="flex justify-end">
+                        <button
+                            type="button"
+                            onClick={handleToggleBeenThere}
+                            onKeyDown ={(e) => {
+                                if (e.key === 'Enter') {
+                                    handleToggleBeenThere();
+                                }
+                            }}
+                            className="hidden lg:flex column space-x-1 text-xs font-medium select-none cursor-pointer flex justify-end"
+                        >
+                            <p >full story</p>
+                            <svg 
+                                xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" 
+                                viewBox="0 0 20 16" fill="currentColor">
+                                <path fill-rule="evenodd" 
+                                    d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" 
+                                    clip-rule="evenodd" 
                             />
-                        </svg>
-                        </button> 
-                        </div>                   
+                         </svg>
+                    </button> 
                 </div>
             </div>
         </>

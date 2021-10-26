@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import FirebaseContext from "../context/firebase";
 import * as ROUTES from '../constants/routes';
+import Circles from '../components/circles';
 
 export default function Login() {     
     const history = useHistory();
@@ -29,6 +30,7 @@ export default function Login() {
 
     const handleLogin = async (event) => {
         event.preventDefault();
+        setAnimateTrue(true);
     
         try {
           await firebase.auth().signInWithEmailAndPassword(emailAddress, password);
@@ -36,8 +38,7 @@ export default function Login() {
         } catch (error) {
           setEmailAddress('');
           setPassword('');
-          setError(error.message);
-          setAnimateTrue(true);
+          setError(error.message);          
         }
       };
 
@@ -47,16 +48,16 @@ export default function Login() {
                                    
     
    return (
-        <div class="w-full space-y-0 h-screen">
-            <nav class="sticky w-full h-auto bg-white px-2 sm:px-0">
-                        <div class="container flex justify-between py-1 mx-auto">
-                            <label class="uppercase text-xl font-bold tracking-wider text-purple-900">
+        <div class="w-full h-screen px-4 md:px-0 lg:px-0 mb-8 sm:px-0">
+            <nav class="sticky top-0 w-full bg-white px-2 md:px-0 lg:px-0 sm:px-0">
+                        <div class="container flex justify-between space-x-4 py-1 mx-auto">
+                            <label class="flex px-3 uppercase text-xl font-bold tracking-wider text-purple-900">
                                 razum
                             </label>
                             <button
                             disabled={isInvalid}
                             type="submit" 
-                            className="bg-indigo-50 font-medium mr-2 rounded-xl text-sm bg-white tracking-wider text-indigo-900 hover:bg-indigo-100 transition mt-1 py-1">
+                            className="flex justify-end bg-indigo-50 font-medium mr-2 rounded-xl text-sm bg-white tracking-wider text-indigo-900 hover:bg-indigo-100 transition mt-1 py-1">
                                 <Link to={ROUTES.SIGN_UP} class='block px-4 '>
                                     Sign Up
                                 </Link>
@@ -64,9 +65,12 @@ export default function Login() {
                         </div>
             </nav>
                     <div className="container bg-gray-70 mx-auto w-full items-center h-screen"> 
-                        <div className=" flex justify-center min-w-full pt-14 mx-auto px-10 md:w-4/5 md:pt-20  lg:w-4/5 lg:pt-20 ">
-                            <p className="text-gray-900 text-center flex font-semibold text-4xl lg:text-5xl flex items-center mx-auto">
-                                Use Obstacles to Your Advantage
+                        <div className=" flex justify-center w-full pt-14 mx-auto lg:px-8 md:w-4/5 md:pt-20  lg:w-4/5 lg:pt-20 ">
+                            <p className="hidden lg:block text-gray-800 text-center w-full flex font-bold lg:font-semibold text-3xl lg:text-5xl flex items-center">
+                                Use obstacles to your advantage
+                            </p>
+                            <p className="lg:hidden text-gray-800 text-center w-full justify-center flex font-semibold text-4xl flex items-center">
+                                Welcome back.
                             </p>
                         </div>
                         <div className=" flex justify-center w-4/5 pt-5 mx-auto px-10">
@@ -244,11 +248,11 @@ export default function Login() {
                                 </div>  
                             </div>  
                                     
-                            <div className="bg-white flex justify-center mx-auto flex-col px-4 my-auto w-5/5 h-auto my-0 px-1 py-5 md:py-12 lg:py-14 md:flex 
-                                md:w-2/5 md:mx-2 md:px-4 lg:flex lg:w-2/5 lg:mx-2 lg:px-4 rounded-lg md:shadow-2xl lg:shadow-2xl">
-                                <div class="p-1 text-center pb-13">
+                            <div className="bg-white flex justify-center mx-auto flex-col px-4 my-auto w-5/5 h-auto my-0  py-6 md:py-12 lg:py-12 md:flex 
+                                md:w-3/5 md:mx-2 md:px-4 lg:flex lg:w-2/5 lg:mx-2 lg:px-4 rounded-lg md:shadow-2xl lg:shadow-2xl">
+                                <div class="text-center pb-13">
                                     <h6 class="text-gray-800 font-medium text-xl">Login into your account</h6>
-                                    <p className="text-xs text-gray-400 pt-3">
+                                    <p className="text-xs text-gray-400 pb-8 pt-3">
                                         Don't have an account yet?{` `}
                                         <Link to={ROUTES.SIGN_UP} className="font-bold text-indigo-500">
                                             Create New
@@ -263,7 +267,7 @@ export default function Login() {
                                         aria-label="Enter your email address"          
                                         type="text"
                                         placeholder="Email address"
-                                        className="text-sm text-gray-base w-full mr-3 h2 py-2 p-1 pl-3 font-base border border-gray-primary rounded-full mb-2 focus:outline-none focus:ring-0.5 focus:border-purple-500"
+                                        className="text-sm text-gray-base w-full mr-3 h2 py-3 lg:py-2 p-1 pl-3 font-base border border-gray-primary rounded-full mb-2 focus:outline-none focus:ring-0.5 focus:border-purple-500"
                                         onChange={({ target }) => setEmailAddress(target.value)}
                                         value={emailAddress}
                                     />
@@ -271,7 +275,7 @@ export default function Login() {
                                         aria-label="Enter your password"
                                         type="password"
                                         placeholder="Password"
-                                        className="text-sm text-gray-base w-full mb-2 mr-3 py-2 p-1 pl-3 font-base border border-gray-primary rounded-full mb-2 focus:outline-none focus:ring-0.5 focus:border-purple-500"
+                                        className="text-sm text-gray-base w-full mb-2 mr-3 py-3 lg:py-2 mt-3 lg:mt-0 p-1 pl-3 font-base border border-gray-primary rounded-full mb-2 focus:outline-none focus:ring-0.5 focus:border-purple-500"
                                         style={{ focus: "ring-2 focus:ring-purple-600"}}
                                         onChange={({ target }) => setPassword(target.value)}
                                         value={password}
@@ -284,15 +288,15 @@ export default function Login() {
                                     <button
                                         disabled={isInvalid}
                                         type="submit"
+                                        onClick={handleLogin}
                                         className={`bg-gradient-to-r from-purple-700 to-indigo-600 text-white w-full rounded-full text-sm  p-4  font-medium py-2
                                         ${isInvalid && 'opacity-80'}`}
-                                    >{animateTrue ? (
-                                        <svg class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
-                                            
-                                        </svg>
-                                    ) : (
-                                        <span>Login</span>
-                                    )}
+                                    >   {animateTrue ? (
+                                            <Circles />
+                                            ) : (
+                                                <span>Login</span>
+                                            )
+                                        }
                                     </button>
                                 </form>                
                             </div>

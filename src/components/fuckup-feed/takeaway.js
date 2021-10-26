@@ -7,6 +7,6 @@ export default function Full({ takeAway }) {
     )
 }
 
-Full.propTypes = {
+Full.propTypes = { 
     takeAway: PropTypes.string.isRequired
 }

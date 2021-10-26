@@ -4,6 +4,7 @@ import FirebaseContext  from '../context/firebase';
 import UserContext from "../context/user";
 import * as ROUTES from "../constants/routes";
 import { createPopper } from "@popperjs/core";
+import Circles from '../components/circles';
 
 export default function Header({userName}) {
     const [showModal, setShowModal] = useState(false);
@@ -22,6 +23,8 @@ export default function Header({userName}) {
     const btnDropdownRef = createRef();
     const popoverDropdownRef = createRef();
 
+    const [loading, setLoading] = useState(false);
+
     const openDropdownPopover = () => {
         createPopper(btnDropdownRef.current, popoverDropdownRef.current, {
         placement: "bottom-start",
@@ -36,6 +39,7 @@ export default function Header({userName}) {
     //Post new fuckup
     const handleNewFuckup = async (event) => {
         event.preventDefault();
+        setLoading(true);
         
         // firebase fuckup collection (create a document)
         await firebase
@@ -60,8 +64,8 @@ export default function Header({userName}) {
     };
         
     return (
-        <header className="sticky top-0 z-50 w-full border-indigo-500 h-14 bg-gradient-to-b from-purple-600 via-purple-800 to-purple-600 px-4 md:px-0 lg:px-0 mb-8 sm:px-0">
-                <div className="container mx-auto max-w-screen-lg h-full">
+        <header className="sticky top-0 z-50 w-full border-indigo-500 h-14 bg-gradient-to-r from-purple-700 to-purple-800 px-4 md:px-0 lg:px-0 mb-8 sm:px-0">
+                <div className="container sticky top-0 mx-auto max-w-screen-lg h-full">
                     <div className="flex justify-between h-full space-x-24">
                         <div className="text-gray-100 lg:text-indigo-50 text-center lg:border-r border-indigo-300 flex items-center align-items cursor-pointer">
                             <h1 className="flex px-3 uppercase tracking-wider text-xl font-bold justify-center w-full">
@@ -200,7 +204,8 @@ export default function Header({userName}) {
                                                                             ${isInvalid && 'opacity-80'} ease-linear transition-all duration-150 tracking-wider`}
                                                                             type="submit"
                                                                             onClick={handleNewFuckup}
-                                                                        > Post
+                                                                        > 
+                                                                            {loading ? (<Circles />) : (<span>Post</span>)}
                                                                         </button>
                                                                     </div>
                                                                 </div>
@@ -209,7 +214,6 @@ export default function Header({userName}) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
                                         </div>
                                     ) : null}
                                     
@@ -241,7 +245,7 @@ export default function Header({userName}) {
                                     <div className="flex h-screen justify-center items-center">
                                         <div className={
                                                 (dropdownPopoverShow ? "block " : "hidden ")  +
-                                                "bg-white text-base z-50 fixed float-left mt-44 lg:mt-40 pb-2 list-none text-left rounded shadow-lg"
+                                                "bg-white text-base z-50 fixed float-left mt-40 lg:mt-40 pb-2 list-none text-left rounded shadow-lg"
                                             }
                                             style={{ minWidth: "25rem" }}
                                         > 

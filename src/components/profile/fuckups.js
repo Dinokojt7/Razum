@@ -39,7 +39,7 @@ export default function Fuckups({fuckups}) {
                 ) :     
                 <div className="justify-between flex mt-10 border">
                     <p className="text-gray-600 font-semibold pb-20 pt-2 pl-2 text-lg">
-                        You have'nt posted any fuckups. 
+                        You haven't posted any fuckups. 
                     </p>
                 </div>
             }   

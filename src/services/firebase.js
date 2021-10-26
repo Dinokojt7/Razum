@@ -84,7 +84,7 @@ export async function getSuggestedProfiles(userId, following) {
       .firestore()
       .collection('users')
       .doc(loggedInUserDocId)
-      .update({follwers: isFollowingProfile
+      .update({followers: isFollowingProfile
         ? FieldValue.arrayRemove(profileId)
         : FieldValue.arrayUnion(profileId)
       });

@@ -17,7 +17,7 @@ export default function useFuckups() {
                 followedUserFuckups = await getFuckups(userId, following);
             }
 
-            //re-arrange fuckups to be newest fuckups first by 
+            //re-arrange fuckups to be newest fuckups first by  
             followedUserFuckups.sort((a, b) => b.dateCreated - a.dateCreated);
             setFuckups(followedUserFuckups);
         }

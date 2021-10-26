@@ -1,6 +1,6 @@
 export default function FilterTable() {
     
-    return (
+    return ( 
         <div class="antialiased">
             <div class="container flex justify-center mr-0  px-auto">
                 <div class="pb-4">
@@ -8,7 +8,7 @@ export default function FilterTable() {
                         <div class=" flex w-4/5 flex-col mb-1 sm:mb-0">
                             <div class="relative">
                                 <select
-                                    class="appearance-none text-sm h-full rounded-l border block appearance-none bg-white border-gray-400 text-gray-700 py-2 px-1 pr-6 focus:outline-none focus:bg-white focus:border-gray-500">
+                                    class="appearance-none text-sm h-full rounded-l border block bg-white border-gray-400 text-gray-700 py-2 px-1 pr-6 focus:outline-none focus:bg-white focus:border-gray-500">
                                     <option>Pre-MVP</option>
                                     <option>First sales</option>
                                     <option>Validation</option>
@@ -26,7 +26,7 @@ export default function FilterTable() {
                         <div class=" flex w-4/5 flex-col mb-1 sm:mb-0">
                             <div class="relative">
                                 <select
-                                    class="appearance-none text-sm h-full rounded-l border block appearance-none bg-white border-gray-400 text-gray-700 py-2 px-1 pr-6 focus:outline-none focus:bg-white focus:border-gray-500">
+                                    class="appearance-none text-sm h-full rounded-r border block bg-white border-gray-400 text-gray-700 py-2 px-1 pr-6 focus:outline-none focus:bg-white focus:border-gray-500">
                                     <option>SaaS</option>
                                     <option>VR and Gaming</option>
                                     <option>Dev-Ops</option>
