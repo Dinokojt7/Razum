@@ -1,6 +1,8 @@
+import React from 'react';
+import "../App.css";
 
 export default function Circles() {
-    let circleCommonClasses = 'bg-transparent flex justify-center rounded-full animate-spin h-4 w-4 border-t-2 border-b-2 border-indigo-200';
+    let circleCommonClasses = 'loader ease-linear rounded-full border-2 border-t-2 border-transparent h-6 w-6';
 
      return (
     <div className='flex justify-center'>

@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import FirebaseContext from "../context/firebase";
 import * as ROUTES from '../constants/routes';
 import { doesUserNameExist } from '../services/firebase';
-import {ReactComponent as Business1} from './business1.svg';
+import {ReactComponent as Business2} from './business2.svg';
 import Loader from 'react-loader-spinner';
 import Circles from '../components/circles';
 import ReactLoader from '../components/loader';
@@ -21,8 +21,7 @@ export default function SignUp() {
     const [market, setMarket] = useState('');
     const [company, setcompany] = useState('');
     const [loading, setLoading] = useState(false);
-    let circleCommonClasses = 'bg-current rounded-full animate-spin rounded-full h-6 w-6 border-b-2 border-gray-900';
-
+    
     const [error, setError] = useState('');
     const isInvalid = password === '' || emailAddress === '';
 
@@ -78,16 +77,16 @@ export default function SignUp() {
     }, []);                                  
 
     return (
-    <div class="w-full lg:bg-gradient-to-r from-purple-500 via-indigo-400 to-indigo-500 space-y-0 h-screen px-2 md:px-0 lg:px-0  sm:px-0">   
-    <nav class="sticky top-0 bg-white lg:bg-gradient-to-r from-purple-500 via-indigo-400 to-indigo-500 px-4 md:px-0 lg:px-0sm:px-0">
+    <div class="w-full bg-purple-50 lg:bg-gradient-to-r from-purple-500 via-indigo-400 to-indigo-500 space-y-0 h-screen px-2 md:px-0 lg:px-0  sm:px-0">   
+    <nav class="sticky top-0 bg-transparent lg:bg-gradient-to-r from-purple-500 via-indigo-400 to-indigo-500 px-4 md:px-0 lg:px-0sm:px-0">
         <div class="container flex justify-between py-1 space-x-4 mx-auto">
-        <label class="flex px-2 uppercase text-xl text-purple-900 font-bold tracking-wider lg:text-gray-100">
+        <label class="flex px-2 pt-1 uppercase text-xl text-transparent bg-clip-text bg-gradient-to-br from-purple-900 via-purple-500 to-indigo-500 font-bold tracking-wider lg:text-gray-100">
             razum
         </label> 
             <button
             disabled={isInvalid}
             type="submit" 
-            className="bg-indigo-50 font-medium mr-2 rounded-xl text-sm bg-white tracking-wider text-indigo-900 hover:bg-indigo-100 transition mt-1 py-1"
+            className="bg-transparent lg:bg-indigo-50 lg:border-none border border-2 border-gray-400 font-medium mr-2 rounded-xl text-sm  tracking-wider text-gray-700 lg:text-indigo-900 hover:bg-indigo-100 transition mt-1 py-1"
             >
                 <Link to={ROUTES.LOGIN} class='block px-4 '>
                     Sign In
@@ -96,8 +95,8 @@ export default function SignUp() {
         </div>
     </nav>        
         <div className="container bg-gray-70 mx-auto w-full items-center h-screen"> 
-             <div className=" lg:hidden flex justify-center md:min-w-full md:px-10 md:flex lg:min-w-full pt-8 px-0 ">
-                <p className="lg:hidden text-gray-500 text-center flex font-semibold text-3xl md:text-5xl lg:text-5xl flex items-center mx-auto">
+             <div className=" lg:hidden flex justify-center md:min-w-full md:px-10 md:flex lg:min-w-full pt-6 px-0 ">
+                <p className="lg:hidden text-gray-700 text-center flex font-semibold text-3xl md:text-5xl lg:text-5xl flex items-center mx-auto">
                     Join the experience.
                 </p>
             </div>
@@ -105,7 +104,7 @@ export default function SignUp() {
                 <p className="hidden lg:flex text-gray-800 lg:text-white text-center flex font-bold lg:font-semibold text-3xl md:text-5xl lg:text-5xl flex items-center mx-auto">
                     Join the experience.
                 </p>
-                <p className="hidden lg:flex text-white text-left flex font-semibold text-base md:text-base lg:text-base flex items-center w-3/5 pt-3 pr-18">
+                <p className="hidden lg:flex text-white text-left flex font-normal text-base md:text-base lg:text-base flex items-center w-3/5 pt-3 pr-18">
                 We're a community, that's creating, exploring and sharing our encounters with 
                 one another as founders. Join us and find relevant stories in seconds 
                 by filtering market and stage. See where founders are heading and what they 
@@ -114,15 +113,15 @@ export default function SignUp() {
                 </p>
             </div>
             <div className="container pt-0 mx-auto px-2 lg:px-auto lg:pt-5 flex lg:space-x-12 lg:justify-start">
-                <div className="hidden lg:flex"><Business1 className="pr-12" style={{ width: "400px", height: "400px"}}  /></div>                
+                <div className="hidden lg:flex"><Business2 className="pr-12" style={{ width: "400px", height: "400px"}}  /></div>                
                 
                 <div className="lg:bg-gray-50 container flex items-center justify-center mx-auto flex-col 
-                    px-4 my-auto w-5/5 h-auto px-1 pb-4 md:w-2/5 md:mx-2 md:px-4 md:shadow-2xl md:flex md:justify-center lg:flex lg:w-2/5 lg:mx-2 lg:px-4 rounded-lg lg:shadow-2xl"> 
+                    px-4 my-auto w-5/5 h-auto px-1 pb-3 md:w-2/5 md:mx-2 md:px-4 md:shadow-2xl md:flex md:justify-center lg:flex lg:w-2/5 lg:mx-2 lg:px-4 rounded-lg lg:shadow-2xl"> 
                     <div class="text-center pb-3 lg:pb-3">  
-                        <h4 class="text-gray-500 font-medium text-xl pb-2 pt-0 lg:pt-2">Create your account</h4>
-                        <p className="text-xs text-gray-400 pb-4">
+                        <h4 class="text-gray-700 font-medium text-xl pb-2 pt-0 lg:pt-2">Create your account</h4>
+                        <p className="text-sm text-gray-500 pb-4">
                             Have an account?{` `}
-                            <Link to={ROUTES.LOGIN} className="font-bold tracking-wider text-indigo-500">
+                            <Link to={ROUTES.LOGIN} className="font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-br from-purple-900 via-purple-500 to-indigo-500">
                                 Login
                             </Link>
                         </p>
@@ -189,7 +188,7 @@ export default function SignUp() {
                         />
                         <label className="w-full text-sm text-gray-500 tracking-wider bg-white h2 py-3 lg:py-2 p-1 pl-3 font-medium border border-gray-300 px-10 rounded-full">
                                 <select className="focus:outline-none active:bg-none" onChange={({ target }) => setMarket(target.value)}>
-                                <option value="" className="bg-gray-200 text-black uppercase font-medium">Select Your Market</option>
+                                <option value="" className="text-black uppercase font-medium">Select Your Market</option>
                                 <option value="SaaS" className="text-black">SaaS</option>
                                 <option value="DevOps and Cloud" className="text-black">DevOps and Cloud</option>
                                 <option value="Graphics and Design" className="text-black">Graphics and Design</option>
@@ -232,8 +231,8 @@ export default function SignUp() {
                         >
                             {loading ? (<Circles />) : (<span>Sign Up</span>)}
                         </button>
-                        <div class="flex justify-center pt-8">
-                            <Link to={ROUTES.DASHBOARD} className="font-medium text-sm text-indigo-500 hover:text-purple-500 mb-6">
+                        <div class="flex justify-center pt-6">
+                            <Link to={ROUTES.DASHBOARD} className="font-medium text-sm text-transparent bg-clip-text bg-gradient-to-br from-purple-900 via-purple-500 to-indigo-500 hover:text-purple-500 mb-7">
                                 Terms and Conditions
                             </Link>
                         </div>

@@ -49,10 +49,10 @@ export default function Login() {
                                    
     
    return (
-        <div class="w-full h-screen px-4 md:px-0 lg:px-0 mb-8 sm:px-0">
-            <nav class="sticky top-0 w-full bg-white px-2 md:px-0 lg:px-0 sm:px-0">
+        <div class="w-full bg-gray-50 h-screen px-4 md:px-0 lg:px-0 mb-8 sm:px-0">
+            <nav class="sticky top-0 w-full bg-gray-50 px-2 md:px-0 lg:px-0 sm:px-0">
                         <div class="container flex justify-between space-x-4 py-1 mx-auto">
-                            <label class="flex px-3 uppercase text-xl font-bold tracking-wider text-purple-900">
+                            <label class="flex px-2 pt-1 uppercase text-xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-br from-purple-900 via-purple-500 to-indigo-500">
                                 razum
                             </label>
                             <button
@@ -70,9 +70,9 @@ export default function Login() {
                             <p className="hidden lg:block text-gray-800 text-center w-full flex font-bold lg:font-semibold text-3xl lg:text-5xl flex items-center">
                                 Use obstacles to your advantage
                             </p>
-                            <p className="lg:hidden text-gray-500 text-center w-full justify-center flex font-semibold text-4xl flex items-center">
-                                Welcome back.
-                            </p>
+                            <p className="lg:hidden text-gray-600 text-center w-full justify-center flex font-semibold text-3xl flex items-center">
+                                Welcome back!
+                            </p>                            
                         </div>
                         <div className=" flex justify-center w-4/5 pt-5 mx-auto px-10">
                             <p className="hidden flex md:flex lg:flex text-gray-600 text-center font-normal text-base items-center mx-auto">
@@ -249,14 +249,14 @@ export default function Login() {
                                 </div>  
                             </div>  
                                     
-                            <div className="bg-white flex justify-center mx-auto flex-col px-4 my-auto w-5/5 h-auto my-0  py-6 md:py-12 lg:py-12 md:flex 
+                            <div className="bg-gray-50 flex justify-center mx-auto flex-col px-4 my-auto w-5/5 h-auto my-0  py-6 md:py-12 lg:py-12 md:flex 
                                 md:w-3/5 md:mx-2 md:px-4 lg:flex lg:w-2/5 lg:mx-2 lg:px-4 rounded-lg md:shadow-2xl lg:shadow-2xl">
                                 <div class="text-center pb-13">
-                                    <h6 class="text-gray-500 font-medium text-xl">Login into your account</h6>
-                                    <p className="text-xs text-gray-400 pb-8 pt-3">
-                                        Don't have an account yet?{` `}
-                                        <Link to={ROUTES.SIGN_UP} className="font-bold text-indigo-500">
-                                            Create New
+                                    <h6 class="text-gray-600 font-medium text-xl">Login into your account</h6>
+                                    <p className="text-sm text-gray-500 pb-8 pt-3">
+                                        New to Razum?{` `}
+                                        <Link to={ROUTES.SIGN_UP} className="font-bold text-transparent bg-clip-text bg-gradient-to-br from-purple-900 via-purple-500 to-indigo-500">
+                                            Start here!
                                         </Link>
                                     </p>
                                 </div>
@@ -282,7 +282,8 @@ export default function Login() {
                                         value={password}
                                     />
                                     <div class="flex justify-end pb-10">
-                                        <Link to={`https://razum-3a1e6.firebaseapp.com/__/auth/action?mode=action&oobCode=code`} className="font-medium text-xs text-indigo-500 hover:text-indigo-700 mb-6">
+                                        <Link to={`https://razum-3a1e6.firebaseapp.com/__/auth/action?mode=action&oobCode=code`} className="font-medium text-sm 
+                                        text-transparent bg-clip-text bg-gradient-to-br from-purple-900 via-purple-500 to-indigo-500">
                                             Forgot your password?
                                         </Link>
                                     </div>

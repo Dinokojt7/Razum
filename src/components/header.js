@@ -60,7 +60,11 @@ export default function Header({userName}) {
             .catch(err => {
             setError(error.message);
         });
-        setShowModal(false)        
+        setShowModal(false);
+        setLoading(false);
+        setNewFuckup('');
+        setTakeAway('');
+        setFullStory('');        
     };
         
     return (
