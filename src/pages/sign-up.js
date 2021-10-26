@@ -78,7 +78,7 @@ export default function SignUp() {
 
     return (
     <div class="w-full bg-purple-50 lg:bg-gradient-to-r from-purple-500 via-indigo-400 to-indigo-500 space-y-0 h-screen px-2 md:px-0 lg:px-0  sm:px-0">   
-    <nav class="sticky top-0 bg-transparent lg:bg-gradient-to-r from-purple-500 via-indigo-400 to-indigo-500 px-4 md:px-0 lg:px-0sm:px-0">
+    <nav class="sticky top-0 bg-purple-50 lg:bg-gradient-to-r from-purple-500 via-indigo-400 to-indigo-500 px-4 md:px-0 lg:px-0sm:px-0">
         <div class="container flex justify-between py-1 space-x-4 mx-auto">
         <label class="flex px-2 pt-1 uppercase text-xl text-transparent bg-clip-text bg-gradient-to-br from-purple-900 via-purple-500 to-indigo-500 font-bold tracking-wider lg:text-gray-100">
             razum
