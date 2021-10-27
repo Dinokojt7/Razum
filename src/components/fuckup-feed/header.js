@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/avatars-jdenticon-sprites';0
 
 
 export default function Header({ userName, body }) {
@@ -19,13 +21,19 @@ export default function Header({ userName, body }) {
         ) + " ..."
       : mobileBody;
 
+      //Dice bear avatar
+    let svg = createAvatar(style, {
+        seed: 'custom-seed',
+        // ... and other options
+      });
+
     return (
         <div className="flex h-4 mt-0 pt-6 py-8">
             <div className="flex items-center mt-0">
                 <Link to={`/p/${userName}`} className="flex p-0 mt-0 items-center">
                     <img
                         className="h-9 w-9 flex mr-5 mt-0 pt-0"
-                        src={`/images/avatars/Tiisetso.jpg`}
+                        src={`https://avatars.dicebear.com/api/jdenticon/:seed.svg`}
                     />
                 </Link>
                 <div className="hidden lg:block col-span-3 mt-0">

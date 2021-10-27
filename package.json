@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "-": "^0.0.1",
+    "@dicebear/avatars": "^4.10.0",
+    "@dicebear/avatars-identicon-sprites": "^4.10.0",
+    "@dicebear/avatars-jdenticon-sprites": "^4.10.0",
     "@popperjs/core": "^2.10.2",
     "@svgr/webpack": "^5.5.0",
     "@testing-library/jest-dom": "^5.11.4",

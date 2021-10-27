@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import FirebaseContext  from '../context/firebase';
 import UserContext from "../context/user";
 import * as ROUTES from "../constants/routes";
-import { createPopper } from "@popperjs/core";
 import Circles from '../components/circles';
+import { createPopper } from "@popperjs/core";
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/avatars-jdenticon-sprites';
 
-export default function Header({userName}) {
+export default function Header() {
     const [showModal, setShowModal] = useState(false);
     const [newFuckup, setNewFuckup] = useState('');
     const [takeAway, setTakeAway] = useState('');
@@ -36,6 +38,12 @@ export default function Header({userName}) {
         setDropdownPopoverShow(false);
     };
     
+    //Dice bear avatar
+    let svg = createAvatar(style, {
+        seed: 'custom-seed',
+        // ... and other options
+      });
+
     //Post new fuckup
     const handleNewFuckup = async (event) => {
         event.preventDefault();
@@ -225,7 +233,7 @@ export default function Header({userName}) {
                                         <Link to={`./p/${user.displayName}`}>
                                             <img 
                                                 className={"rounded-full bg-black-200 h-7 w-7 flex"}
-                                                src={`/images/avatars/Tiisetso.jpg`}
+                                                src={`https://avatars.dicebear.com/api/jdenticon/:seed.svg`}
                                                 alt={`${user.displayName} profile`}
                                             />
                                         </Link>

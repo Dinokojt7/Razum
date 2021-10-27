@@ -5,6 +5,8 @@ import useUser from '../../hooks/use-user';
 import ReactAvatarEditor from "react-avatar-editor";
 import { Link } from 'react-router-dom';
 import { isUserFollowingProfile, toggleFollow } from '../../services/firebase';
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/avatars-jdenticon-sprites';
 
 export default function Header({ 
     fuckupCount, 
@@ -32,6 +34,14 @@ export default function Header({
         await toggleFollow(isFollowingProfile, user.docId, profileDocId, profileUserId, user.userId);
     };
 
+    //Dice bear avatar
+    let svg = createAvatar(style, {
+        src: ``,
+        seed: 'custom-seed',
+        color: ['indigo']
+        // ... and other options
+      });
+
     useEffect(() => {
         const isLoggedInUserFollowingProfile = async () => {
             const isFollowing = await isUserFollowingProfile(user.userName, profileUserId);
@@ -54,8 +64,8 @@ export default function Header({
                 <div className="grid grid-cols-2">
                     <div className="container col-span-1 flex justify-start">                
                         <img 
-                            className="h-20 w-20 border border-indigo-300 flex mt-2 mr-4"                 
-                            src={`/images/avatars/Tiisetso.jpg`}
+                            className="h-20 w-20 border border-gray-200 flex mt-2 mr-4"                 
+                            src={'https://avatars.dicebear.com/api/jdenticon/:seed.svg'}
                             alt={`${user.userName} profile picture`}
                         />
                         <div className="container col-span-1 pr-3 mt-0">
