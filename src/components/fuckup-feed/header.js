@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { createAvatar } from '@dicebear/avatars';
-import * as style from '@dicebear/avatars-jdenticon-sprites';0
+import * as style from '@dicebear/avatars-jdenticon-sprites';
 
 
 export default function Header({ userName, body }) {
