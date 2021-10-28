@@ -7,7 +7,7 @@ import 'firebase/compat/auth';
 // import { seedDatabase } from '../seed';
 
 const config = {
-  apiKey: "AIzaSyBHUZSd1AWTq88glSA6eV65W67mgrkqzJ4",
+  apiKey: "AIzaSyCeeuN7zNmQ34G_yg6b0dAAiyor65HifpI",
   authDomain: "razum-3a1e6.firebaseapp.com",
   projectId: "razum-3a1e6",
   storageBucket: "razum-3a1e6.appspot.com",
