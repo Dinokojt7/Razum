@@ -9,4 +9,4 @@ The main functionality of this app is to solve a knowledge problem which is core
 of startup founders. Founders come and share their daily struggles and lessons in the form of fuckups 
 with other founders who are at the same stage to learn and take better actions. 
 Majority of fuckups on the web are about mature companies and hardly relevant. 
-hat's where Razum comes in as a place for makers to learn together and take smarter routes.
+That's where Razum comes in as a place for makers to learn together and take smarter routes.
