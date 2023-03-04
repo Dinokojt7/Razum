@@ -53,7 +53,7 @@ export default function Login() {
             <nav class="sticky top-0 w-full bg-gray-50 px-2 md:px-0 lg:px-0 sm:px-0">
                         <div class="container flex justify-between space-x-4 py-1 mx-auto">
                             <label class="flex px-2 pt-1 uppercase text-xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-br from-purple-900 via-purple-500 to-indigo-500">
-                                razum
+                                <img class="w-7 rounded-full" src="https://firebasestorage.googleapis.com/v0/b/izinto-domestically.appspot.com/o/favicon.png?alt=media&token=ea9b7266-3621-4b83-9859-deb3d2b6fd59" alt="FS" />
                             </label>
                             <button
                             disabled={isInvalid}
