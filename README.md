@@ -1,4 +1,4 @@
-# Razum is a react built web app for creators and founders to learn from each other's fuckups and connect
+# Razum is a react built web app for creators and founders to learn from each other's fuckups and connect 
 
 This is a React (Custom Hooks, Context) web app, made with Firebase & Tailwind CSS. I have built the
 following pages within this application: login, sign up, dashboard & lastly the user profile page. 
